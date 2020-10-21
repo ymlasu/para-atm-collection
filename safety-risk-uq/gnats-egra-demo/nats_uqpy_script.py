@@ -1,4 +1,7 @@
-# Script to handle running NATS for UQpy
+"""Script to handle running NATS for UQpy
+
+Refer to https://uqpyproject.readthedocs.io/en/latest/runmodel_doc.html
+"""
 
 import os
 import sys

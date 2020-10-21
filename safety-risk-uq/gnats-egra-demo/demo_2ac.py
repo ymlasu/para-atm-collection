@@ -1,3 +1,13 @@
+"""Implementation of simple 2-aircraft NATS simulation
+
+The paraatm Python package is used to facilitate interfacing with
+NATS, but using the NatsSimulationWrapper base class.  The simulation
+method is written to accept options that are used to control the
+simulation: the latitude and longitude coordinates for the specified
+waypoint of the first aircraft.  These serve as input variables to
+control the simulation.
+"""
+
 import time
 
 from paraatm.io.nats import NatsSimulationWrapper, NatsEnvironment
