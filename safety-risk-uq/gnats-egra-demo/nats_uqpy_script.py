@@ -1,4 +1,4 @@
-"""Script to handle running NATS for UQpy
+"""Implements the "Third-party software model" interface expected by UQpy
 
 Refer to https://uqpyproject.readthedocs.io/en/latest/runmodel_doc.html
 """
