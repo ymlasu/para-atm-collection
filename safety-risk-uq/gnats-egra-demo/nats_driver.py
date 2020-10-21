@@ -1,3 +1,17 @@
+"""Driver script to run NATS "demo_2ac" simulation
+
+Usage: python nats_driver.py <input_file> <output_file>
+
+This driver script implements the "Third-party software model"
+interface expected by UQpy.  It is intended to be run from the command
+line, passing two arguments: the names of the input and output file.
+The input file is a plain text file containing the values of the two
+variables (waypoint latitude and longitude coordinates).  The script
+will then execute NATS using those inputs as parameters, post-process
+the results to compute separation distance, and write the separation
+distance scalar result to output file.
+"""
+
 import numpy as np
 import sys
 
@@ -7,6 +21,12 @@ from demo_2ac import TwoAcSim
 
 def calc_sep_distance_vs_time(df):
     """Compute separation distance vs time for two aircraft
+    
+    Note: this function is for demonstration only.  For simplicity, it
+    computes separation distance directly in terms of a latitude and
+    longitude.  A better approach may be to first convert latitude and
+    longitude into a projection or other more meaningful coordinate
+    system for use in the separation distance calculation.
 
     Parameters
     ----------
@@ -40,15 +60,22 @@ if __name__ == '__main__':
 
     print('Running NATS simulation with input:', input_data)
     sim = TwoAcSim()
+    # Execute the simulation.  Note that we also explicitly pass a
+    # value for output_file, so that we get a record of the output
+    # file.  Conveniently, UQpy coordinates each run in a separate
+    # directory, so we will have a record of the NATS trajectory
+    # output for each individual simulation that is performed.
     df = sim(output_file='nats_output.csv', latitude=input_data[0], longitude=input_data[1])['trajectory']
     sep = calc_sep_distance_vs_time(df)
     result = sep['sep'].iloc[-1]
     print('Separation distance:', result)
 
-    # Running NATS requires a directory change.  By stopping the JVM,
-    # PARA-ATM will automatically return us to the original working
-    # directory.  This is necessary so that the output file goes to
-    # the right place.
+    # Running NATS requires a directory change.  By stopping the JVM
+    # here, PARA-ATM will automatically return us to the original
+    # working directory.  This is necessary so that the output file
+    # goes to the right place. (PARA-ATM will automatically stop the
+    # JVM when the Python process exits, but we want to do it here
+    # prior to writing the output file.)
 
     NatsEnvironment.stop_jvm()
 
