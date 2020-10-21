@@ -14,6 +14,9 @@ Some of the modules that can be found in the Research Collection include:
   <dt><a href="miscellaneous/para-atm-demo/paraatm-demo.ipynb">PARA-ATM Demonstration</a></dt>
   <dd>Demonstration of the <tt>paraatm</tt> Python package</dd>
   
+  <dt><a href="safety-risk-uq/gnats-egra-demo/gnats-egra.ipynb">GNATS Reliability Analysis Demonstration</a></dt>
+  <dd>Example air traffic simulation reliability analysis problem incorporating GNATS, PARA-ATM, and UQpy using the Efficient Global Reliability Analysis (EGRA) method</dd>
+  
   <dt><a href="miscellaneous/weather/echotop.ipynb">Weather processing</a></dt>
   <dd>Example showing how to read in and plot convective cloud top altitude weather data</dd>
   
