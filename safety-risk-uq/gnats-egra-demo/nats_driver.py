@@ -1,15 +1,14 @@
-"""Driver script to run NATS "demo_2ac" simulation
+"""Driver script to run NATS "demo_2ac" simulation for UQpy
 
 Usage: python nats_driver.py <input_file> <output_file>
 
-This driver script implements the "Third-party software model"
-interface expected by UQpy.  It is intended to be run from the command
-line, passing two arguments: the names of the input and output file.
-The input file is a plain text file containing the values of the two
-variables (waypoint latitude and longitude coordinates).  The script
-will then execute NATS using those inputs as parameters, post-process
-the results to compute separation distance, and write the separation
-distance scalar result to output file.
+The script is intended to be run from the command line, passing two
+arguments: the names of the input and output files.  The input file is
+a plain text file containing the values of the two variables (waypoint
+latitude and longitude coordinates).  The script will then execute
+NATS using those inputs as parameters, post-process the results to
+compute separation distance, and write the separation distance scalar
+result to output file.
 """
 
 import numpy as np
