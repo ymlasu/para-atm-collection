@@ -14,7 +14,7 @@ result to output file.
 import numpy as np
 import sys
 
-from paraatm.io.nats import NatsEnvironment
+from paraatm.io.gnats import GnatsEnvironment
 
 from demo_2ac import TwoAcSim
 
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     # JVM when the Python process exits, but we want to do it here
     # prior to writing the output file.)
 
-    NatsEnvironment.stop_jvm()
+    GnatsEnvironment.stop_jvm()
 
     with open(output_file, 'w') as f:
         f.write('{}\n'.format(result))

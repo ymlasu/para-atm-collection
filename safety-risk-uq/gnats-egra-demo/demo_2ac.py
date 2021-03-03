@@ -28,8 +28,8 @@ class TwoAcSim(NatsSimulationWrapper):
             Waypoint longitude value to set
         """
 
-        NATS_SIMULATION_STATUS_PAUSE = NatsEnvironment.get_nats_constant('NATS_SIMULATION_STATUS_PAUSE')
-        NATS_SIMULATION_STATUS_ENDED = NatsEnvironment.get_nats_constant('NATS_SIMULATION_STATUS_ENDED')
+        NATS_SIMULATION_STATUS_PAUSE = NatsEnvironment.get_nats_constant('GNATS_SIMULATION_STATUS_PAUSE')
+        NATS_SIMULATION_STATUS_ENDED = NatsEnvironment.get_nats_constant('GNATS_SIMULATION_STATUS_ENDED')
 
         natsStandalone = NatsEnvironment.get_nats_standalone()
 
@@ -49,9 +49,9 @@ class TwoAcSim(NatsSimulationWrapper):
             raise RuntimeError("Can't get SimulationInterface")
 
         simulationInterface.clear_trajectory()
+        DIR_share = NatsEnvironment.share_dir
 
-        environmentInterface.load_rap("share/tg/rap")
-
+        environmentInterface.load_rap(DIR_share+"/tg/rap")
         aircraftInterface.load_aircraft(NatsEnvironment.build_path('demo_2ac.trx'), NatsEnvironment.build_path('demo_2ac_mfl.trx'))
 
         aclist = aircraftInterface.getAllAircraftId()
