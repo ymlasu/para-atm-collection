@@ -81,8 +81,8 @@ def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim):
 
 def check_if_flight_has_departed(iff_data,callsign,natsSim,departureAirport):
     import numpy as np
-    departureAirportElevation = GnatsEnvironment.airportInterface.select_airport(departureAirport).getElevation()
-    departureAirportLat, departureAirportLon = GnatsEnvironment.airportInterface.getLocation(departureAirport)
+    departureAirportElevation = natsSim.airportInterface.select_airport(departureAirport).getElevation()
+    departureAirportLat, departureAirportLon = natsSim.airportInterface.getLocation(departureAirport)
 
     initial_lat = iff_data[3].loc[iff_data[3].callsign==callsign,'latitude'].iloc[0]
     initial_lon = iff_data[3].loc[iff_data[3].callsign==callsign,'longitude'].iloc[0]
