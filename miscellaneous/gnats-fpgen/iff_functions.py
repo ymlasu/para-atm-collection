@@ -79,7 +79,6 @@ def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,flm
         departOpts = [dep.split('-')[1] for dep in fplist]
         #departOpts = [dep for dep in departOpts if len(dep)==3]
         dest = random.choice(departOpts)
-        
     return dest
 
 def check_if_flight_has_departed(iff_data,callsign,natsSim,departureAirport):

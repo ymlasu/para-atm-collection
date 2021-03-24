@@ -59,15 +59,17 @@ for i,callsign in enumerate(callsigns):
     if callsign != 'UNKN':
         #Get departure airport. If none is known in the IFF+ASDEX file (i.e., it is not the airport whose name is in the iff_fname), then set departure airport as closest airport to the first lat/lon in the dataset. In the future, would like to use IFF_USA to determine departureAirport in this case
         departureAirport = get_departure_airport_from_iff(iff_data,callsign,gnatsSim)
-        #departureRwy = get_departure_runway_from_iff(iff_data,callsign,gnatsSim) # doesn't exist
-        #departureGate = get_departure_gate_from_iff(iff_data,callsign,gnatsSim) # doesn't exist
-        print('callsign:',callsign,'departure airport:',departureAirport)
+
+        if departureAirport[-3:] is 'SFO':
+            #departureRwy = get_departure_runway_from_iff(iff_data,callsign,gnatsSim) # doesn't exist
+            #departureGate = get_departure_gate_from_iff(iff_data,callsign,gnatsSim) # doesn't exist
+            print('callsign:',callsign,'departure airport:',departureAirport)
     
-        #Get arrival airport. If none is known in the IFF+ASDEX file, currently getting closest airport (that is not departure airport) to the final lat/lon in the dataset. In the future, would like to use IFF_USA to determine arrivalAirport
-        arrivalAirport = get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,f.flmap)
-        #arrivalRwy = get_arrival_runway_from_iff(iff_data,callsign,gnatsSim) #doesn't exist
-        #arrivalGate = get_arrival_gate_from_iff(iff_data,callsign,gnatsSim) #doesn't exist
-        result_generated3 = f.generate(3, departureAirport, arrivalAirport, "", "", "", "");
+            #Get arrival airport. If none is known in the IFF+ASDEX file, currently getting closest airport (that is not departure airport) to the final lat/lon in the dataset. In the future, would like to use IFF_USA to determine arrivalAirport
+            arrivalAirport = get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,f.flmap)
+            #arrivalRwy = get_arrival_runway_from_iff(iff_data,callsign,gnatsSim) #doesn't exist
+            #arrivalGate = get_arrival_gate_from_iff(iff_data,callsign,gnatsSim) #doesn't exist
+            result_generated3 = f.generate(3, departureAirport, arrivalAirport, "", "", "", "");
 
         #result_generated1 = f.generate(1, departureAirport, arrivalAirport, departureGate, arrivalGate, departureRwy, arrivalRwy);
         #fp_route=tt.write_trx_geo(iff_data,callsign,departureAirport,arrivalAirport,gnatsSim,trx_file,mfl_file)
