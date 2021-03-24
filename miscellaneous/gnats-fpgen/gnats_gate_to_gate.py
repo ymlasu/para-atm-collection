@@ -21,7 +21,8 @@ class GateToGate(NatsSimulationWrapper):
 
         self.equipmentInterface = natsStandalone.getEquipmentInterface()
         self.aircraftInterface = self.equipmentInterface.getAircraftInterface()
-    
+
+        self.DIR_share = NatsEnvironment.share_dir    
     def simulation(self, pushback_clearance_delay=7):
 
         GNATS_SIMULATION_STATUS_PAUSE = NatsEnvironment.get_gnats_constant('GNATS_SIMULATION_STATUS_PAUSE')
@@ -32,10 +33,10 @@ class GateToGate(NatsSimulationWrapper):
 
         self.simulationInterface.clear_trajectory()
 
-        self.environmentInterface.load_rap(DIR_share + "/tg/rap")
+        self.environmentInterface.load_rap(self.DIR_share + "/tg/rap")
 
         #aircraftInterface.load_aircraft(DIR_share + "/tg/trx/TRX_KBOS_KSFO_GateToGate.trx", DIR_share + "/tg/trx/TRX_KBOS_KSFO_mfl.trx")
-        self.aircraftInterface.load_aircraft(DIR_share + "/tg/trx/TRX_DEMO_SFO_PHX_GateToGate.trx", DIR_share + "/tg/trx/TRX_DEMO_SFO_PHX_mfl.trx")
+        self.aircraftInterface.load_aircraft(self.DIR_share + "/tg/trx/TRX_DEMO_SFO_PHX_GateToGate.trx", DIR_share + "/tg/trx/TRX_DEMO_SFO_PHX_mfl.trx")
 
         #     # Controller to set human error: delay time
         #     # Users can try the following setting and see the difference in trajectory

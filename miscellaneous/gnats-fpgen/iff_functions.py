@@ -42,7 +42,9 @@ def get_departure_airport_from_iff(iff_data,callsign,gnatsSim):
     return origin
         
 
-def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim):
+def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,flmap):
+    import random
+
     dest_opts = []
 
     asdex_airport = iff_data[3][iff_data[3].callsign==callsign].Source.unique()[0][:3]
@@ -71,11 +73,12 @@ def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim):
         dest = dest
 
     else:
-        print("No viable destination airport found for {}. Returning closest airport to last point in dataset that is not {}.".format(callsign,'K'+asdex_airport))
-        df = iff_data[3][iff_data[3].callsign==callsign]
-        lat = df.iloc[-1].latitude
-        lon = df.iloc[-1].longitude
-        dest = get_closest_airport(gnatsSim,lat,lon,asdex_airport)
+        print("No viable destination airport found for {}. Returning random from FlightPlanSelector options.".format(callsign,'K'+asdex_airport))
+        
+        fplist=[key for key in flmap if (key.startswith(departureAirport) or key.startswith(departureAirport[1:]))]
+        departOpts = [dep.split('-')[1] for dep in fplist]
+        #departOpts = [dep for dep in departOpts if len(dep)==3]
+        dest = random.choice(departOpts)
         
     return dest
 
