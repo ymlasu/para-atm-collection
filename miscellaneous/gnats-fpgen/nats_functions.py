@@ -1,6 +1,32 @@
 import os
 
-GNATS_HOME = os.environ.get('GNATS_HOME')
+GNATS_HOME = os.environ.get('NATS_HOME')
+
+
+def get_landing_rwy_entry_and_end_point(landing_rwy_node,airport,domain=['Rwy']):
+    import pandas as pd
+    import numpy as np
+    
+    df = pd.read_csv(GNATS_HOME+'/../GNATS_Server/share/libairport_layout/Airport_Rwy/{}_Nodes_Def.csv'.format(airport))
+    df = df.loc[df.domain.isin(domain)]
+    df_subs = df.dropna(axis=0,how='any')
+    df_subs_id = df_subs.id.values.tolist()
+
+    if np.any(df_subs.id==landing_rwy_node):
+        df_subs_landing = df_subs[df_subs.id==landing_rwy_node]
+        entry_point = df_subs_landing.refName1.values[0]
+        end_point = df_subs_landing.refName2.values[0]
+    elif np.any([i.startswith(landing_rwy_node[:6]) for i in df_subs_id]):
+        df_subs_landing = df_subs.loc[[i.startswith(landing_rwy_node[:6]) for i in df_subs_id],:]
+        entry_point = df_subs_landing.refName1.values[0]
+        end_point = df_subs_landing.refName2.values[0]
+    else:
+        landing_rwy_node = random.choice(df_subs.id.values)
+        df_subs_landing = df_subs[df_subs.id==landing_rwy_node]
+        entry_point = df_subs_landing.refName1.values[0]
+        end_point = df_subs_landing.refName2.values[0]
+
+    return entry_point,end_point
 
 def get_closest_node_at_airport(lat,lon,airport,domain=['Rwy','Gate','Txy','Ramp','Parking']):
     import pandas as pd
@@ -14,7 +40,7 @@ def get_closest_node_at_airport(lat,lon,airport,domain=['Rwy','Gate','Txy','Ramp
 
 def get_list_of_adjacent_nodes(node,airport):
     import pandas as pd
-    df = pd.read_csv(GNATS_HOME+'../GNATS_Server/share/libairport_layout/Airport_Rwy/{}_Nodes_Links.csv'.format(airport))
+    df = pd.read_csv(GNATS_HOME+'/../GNATS_Server/share/libairport_layout/Airport_Rwy/{}_Nodes_Links.csv'.format(airport))
     df = df.loc[(df['n1.id']==node) | (df['n2.id']==node)]
     adjacent_nodes = [nid for nid in df['n1.id'] if nid != node]+[nid for nid in df['n2.id'] if nid != node]
     return list(set(adjacent_nodes))
@@ -23,7 +49,7 @@ def get_adjacent_node_closer_to_runway(nodeList,runwayNode,airport,removed_nodes
     import pandas as pd
     import numpy as np
     
-    df = pd.read_csv(GNATS_HOME+'../GNATS_Server/share/libairport_layout/Airport_Rwy/{}_Nodes_Def.csv'.format(airport))
+    df = pd.read_csv(GNATS_HOME+'/../GNATS_Server/share/libairport_layout/Airport_Rwy/{}_Nodes_Def.csv'.format(airport))
     rwy_lat = df.loc[df['id']==runwayNode]['lat'].values[0]
     rwy_lon = df.loc[df['id']==runwayNode]['lon'].values[0]
 
