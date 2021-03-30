@@ -41,9 +41,9 @@ class GateToGate(NatsSimulationWrapper):
         #self.controllerInterface.setDelayPeriod("SWA1897", AIRCRAFT_CLEARANCE_PUSHBACK, 7)
         #controllerInterface.setDelayPeriod("SWA1897", AIRCRAFT_CLEARANCE_TAKEOFF, 20)
 
-        self.simulationInterface.setupSimulation(22000, 30) # SFO - PHX
+        self.simulationInterface.setupSimulation(22000, 30,1,10) # SFO - PHX
 
-        self.simulationInterface.start(660)
+        self.simulationInterface.start()
 
         # Use a while loop to constantly check simulation status.  When the simulation finishes, continue to output the trajectory data
         while True:
