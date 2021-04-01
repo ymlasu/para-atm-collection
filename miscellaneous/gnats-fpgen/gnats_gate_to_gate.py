@@ -43,7 +43,7 @@ class GateToGate(NatsSimulationWrapper):
 
         self.simulationInterface.setupSimulation(22000, 1,5,10) # SFO - PHX
 
-        self.simulationInterface.start()
+        self.simulationInterface.start(660)
 
         # Use a while loop to constantly check simulation status.  When the simulation finishes, continue to output the trajectory data
         while True:
