@@ -2,7 +2,8 @@ from nats_functions import (get_closest_node_at_airport,
                             get_list_of_adjacent_nodes,
                             get_adjacent_node_closer_to_runway,
                             get_closest_airport,
-                            get_landing_rwy_entry_and_end_point)
+                            get_landing_rwy_entry_and_end_point,
+                            get_usable_apts_and_rwys)
 
 from paraatm.io.gnats import GnatsEnvironment
 
@@ -11,6 +12,8 @@ def get_departure_airport_from_iff(iff_data,callsign,gnatsSim,arrivalAirport=Non
     origin_opts = []
 
     asdex_airport = iff_data[3][iff_data[3].callsign==callsign].Source.unique()[0][:3]
+    usable_apts_and_rwys = get_usable_apts_and_rwys(gnatsSim)
+    allAirports =list(usable_apts_and_rwys.keys())
     
     # Get all unique origin options from the iff_data set
     for key in iff_data.keys():
@@ -29,19 +32,18 @@ def get_departure_airport_from_iff(iff_data,callsign,gnatsSim,arrivalAirport=Non
         origin = []
 
     # Add K to the front of an airport code to make it compatible with NATS
-    if len(origin)==3:
-        origin = 'K'+origin
-        
-    elif len(origin) == 4 and origin[0]=='K':
-        origin = origin
-    else:
-        print("No viable departure airport found for {}. Returning random from FlightPlanSelector options.".format(callsign,'K'+asdex_airport))
+    origin_opts = [origin.rjust(4,'K') for origin in origin_opts]
+    origin_opts = [origin for origin in origin_opts if origin in allAirports]
+    if len(origin_opts)==1:
+        origin=origin_opts
+    if len(origin_opts)>0:
+        origin = list(set(origin_opts))[0]
+    if not origin_opts:
+        print("No viable origin airport found for {}. Returning random from FlightPlanSelector options.".format(callsign,'K'+asdex_airport))
         fplist=[key for key in flmap if (key.endswith(arrivalAirport) or key.endswith(arrivalAirport[1:]))]
         departOpts = [dep.split('-')[0] for dep in fplist]
-        allAirports = [apt[-3:] for apt in list(gnatsSim.airportInterface.getAllAirportCodesInGNATS())]
-        departOpts = [dep for dep in departOpts if dep[-3:] in allAirports]
+        allAirports = [apt[-3:] for apt in allAirports if apt not in [arrivalAirport]]
         origin = random.choice(departOpts)
-
         origin = origin.rjust(4,'K')
         
     return origin
@@ -54,7 +56,8 @@ def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,flm
 
     asdex_airport = iff_data[3][iff_data[3].callsign==callsign].Source.unique()[0][:3]
     
-    allAirports = [apt[-3] for apt in list(gnatsSim.airportInterface.getAllAirportCodesInGNATS())]
+    usable_apts_and_rwys = get_usable_apts_and_rwys(gnatsSim)
+    allAirports =list(usable_apts_and_rwys.keys())
 
     # Get all unique origin options from the iff_data set
     for key in iff_data.keys():
@@ -66,36 +69,21 @@ def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,flm
             df.dropna(axis=0,subset=['estDest'],inplace=True)
             dest_opts.extend([orig for orig in list(df.estDest.unique()) if not orig=='nan'])
     # In the case of multiple origin options names, take the first one
-
+    dest_opts = [dest.rjust(4,'K') for dest in dest_opts]
+    dest_opts = [dest for dest in dest_opts if dest in allAirports]
+    if len(dest_opts)==1:
+        dest=dest_opts
     if len(dest_opts)>0:
         dest = list(set(dest_opts))[0]
-    else:
-        dest = []
-        
-    # Add K to the front of an airport code to make it compatible with NATS
-    if len(dest)==3:
-        dest = 'K'+dest
-        
-    elif len(dest) == 4 and dest[0]=='K':
-        dest = dest
-
-    else:
+    if not dest_opts:
         print("No viable destination airport found for {}. Returning random from FlightPlanSelector options.".format(callsign,'K'+asdex_airport))
-        
         fplist=[key for key in flmap if (key.startswith(departureAirport) or key.startswith(departureAirport[1:]))]
         departOpts = [dep.split('-')[1] for dep in fplist]
-        allAirports = [apt[-3:] for apt in list(gnatsSim.airportInterface.getAllAirportCodesInGNATS())]
+        allAirports = [apt[-3:] for apt in allAirports if apt not in [departureAirport]]
         departOpts = [dep for dep in departOpts if dep[-3:] in allAirports]
         dest = random.choice(departOpts)
         dest = dest.rjust(4,'K')
     return dest
-
-def convert_lat_lon_to_dms(lat,lon):
-    from jpype import JPackage
-    clsGeometry = JPackage('com').osi.util.Geometry
-    new_lat = clsGeometry.convertLatLonDeg_to_degMinSecString(str(lat))
-    new_lon = clsGeometry.convertLatLonDeg_to_degMinSecString(str(lon))
-    return new_lat,new_lon
 
 def check_if_flight_has_departed(iff_data,callsign,natsSim,departureAirport):
     import numpy as np
@@ -229,14 +217,13 @@ def random_airport_gate_and_rwy(gnatsSim,airport,arrival=True):
     gateOpts = [opt for opt in gateOpts if opt.lower().startswith('gate')]
     gate = random.choice(gateOpts)
 
-    rwyOpts = list(gnatsSim.airportInterface.getAllRunways(airport))
-    rwyOpts = [list(r) for r in rwyOpts]
-    rwyOpts = [ent[1] for ent in rwyOpts]
-    runway_node = random.choice(rwyOpts)
-    
-    rwy_entry,rwy_end=get_landing_rwy_entry_and_end_point(runway_node,airport,domain=['Rwy'])
+    usable_apts_and_rwys = get_usable_apts_and_rwys(gnatsSim)
+    usable_rwys = usable_apts_and_rwys[airport]
+    rwy_name = random.choice(usable_rwys)
 
-    if arrival: rwy = rwy_end
-    if not arrival: rwy = rwy_entry
+    [rwy_entry,rwy_end]=list(gnatsSim.airportInterface.getRunwayEnds(airport,rwy_name))
 
-    return gate,rwy
+    #if arrival: rwy = rwy_end
+    #if not arrival: rwy = rwy_entry
+
+    return gate,rwy_name
