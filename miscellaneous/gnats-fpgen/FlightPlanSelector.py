@@ -191,6 +191,20 @@ class FlightPlanSelector:
 			optimalApproach = "I" + arrivalRunway[2:]
 		elif "I" + arrivalRunway[2:-1] in approachProcedures:
 			optimalApproach = "I" + arrivalRunway[2:-1]
+		else:
+			optimalApproach = "I" + arrivalRunway[2:4]
+
+		# TAKEOFF
+		optimalTakeoff = ""
+		firstTakeoffWaypoint = ""
+		takeoffProcedures = self.gnatsSim.terminalAreaInterface.getAllApproaches(origin)
+		if "I" + departureRunway[2:] in takeoffProcedures:
+			optimalTakeoff = "I" + departureRunway[2:]
+		elif "I" + departureRunway[2:-1] in takeoffProcedures:
+			optimalTakeoff = "I" + departureRunway[2:-1]
+		else:
+			optimalTakeoff = "I" + departureRunway[2:4]
+		print('OptimalTakeoff is:',optimalTakeoff)
 		
 		result_Procedure_leg_names = self.gnatsSim.terminalAreaInterface.getProcedure_leg_names('APPROACH', optimalApproach, destination)
 		if not (result_Procedure_leg_names is None) :
@@ -210,7 +224,7 @@ class FlightPlanSelector:
 					if self.distance(latLonVal, approachWp) < distanceToApproach:
 						optimalStar = star
 
-		return (optimalSid, optimalStar, optimalApproach)
+		return (optimalSid, optimalStar, optimalApproach, optimalTakeoff)
 
 	def generateDepartureTaxiPlan(self, origin_airport, departure_runway, origin_gate) :
 		tmp_surface_plan_string = ""
@@ -351,13 +365,22 @@ class FlightPlanSelector:
 
 		if (-1 < self.str_readFlightPlan.index(".")) and (self.str_readFlightPlan.index(".") < self.str_readFlightPlan.rindex(".")) :
 			self.enroute_fp = self.str_readFlightPlan[self.str_readFlightPlan.index(".")+1 : self.str_readFlightPlan.rindex(".")]
-
+		self.selected_takeoff=''
 		if flight_plan_type == self.FLIGHT_PLAN_TYPE_GATE_TO_GATE or flight_plan_type == self.FLIGHT_PLAN_TYPE_RUNWAY_TO_RUNWAY :
 			self.result_terminalProcedure = self.getTerminalProcedures(origin_airport, destination_airport, departure_runway, arrival_runway)
-			if len(self.result_terminalProcedure) == 3 :
+			print('Length of terminalProcedure is ',len(self.result_terminalProcedure))
+			if len(self.result_terminalProcedure) == 4 :
 				self.selected_sid = self.result_terminalProcedure[0]
 				self.selected_star = self.result_terminalProcedure[1]
 				self.selected_approach = self.result_terminalProcedure[2]
+				self.selected_takeoff = self.result_terminalProcedure[3]
+				print('Selected Takeoff:',self.selected_takeoff)
+			else:
+				self.selected_sid = self.result_terminalProcedure[0]
+				self.selected_star = self.result_terminalProcedure[1]
+				self.selected_approach = self.result_terminalProcedure[2]
+				self.selected_takeoff = ''
+				print('Selected Takeoff:',self.selected_takeoff)
 			
 		if (self.enroute_fp.find("/.") == 0) :
 			self.enroute_fp = self.enroute_fp[2:]
@@ -408,7 +431,10 @@ class FlightPlanSelector:
 		
 		if not(departure_runway == "") :
 			fp_generated = fp_generated + "." + departure_runway
-		
+
+		if not(self.selected_takeoff==""):
+			fp_generated = fp_generated + "." + self.selected_takeoff
+
 		if (flight_plan_type == self.FLIGHT_PLAN_TYPE_GATE_TO_GATE) or (flight_plan_type == self.FLIGHT_PLAN_TYPE_RUNWAY_TO_RUNWAY) :
 			if not(self.selected_sid == "") :
 				fp_generated = fp_generated + "." + self.selected_sid

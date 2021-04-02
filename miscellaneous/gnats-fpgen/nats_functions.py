@@ -6,20 +6,21 @@ def get_usable_apts_and_rwys(natsSim):
     apts=list(natsSim.airportInterface.getAllAirportCodesInGNATS())
     usable_apts_and_rwys = {}
     for apt in apts:
-        rwys = list(natsSim.airportInterface.getAllRunways(apt))
-        rwys= [list(rwy) for rwy in rwys]
-        rwy_nodes = [rwy[1] for rwy in rwys]
-        rwys = [rwy[0] for rwy in rwys]
-        approachProcedures = natsSim.terminalAreaInterface.getAllApproaches(apt)
-        usableAPs = [ap[1:] for ap in approachProcedures if ap.startswith("I")]
+        if apt[0]=='K':
+            rwys = list(natsSim.airportInterface.getAllRunways(apt))
+            rwys= [list(rwy) for rwy in rwys]
+            rwy_nodes = [rwy[1] for rwy in rwys]
+            rwys = [rwy[0] for rwy in rwys]
+            approachProcedures = natsSim.terminalAreaInterface.getAllApproaches(apt)
+            usableAPs = [ap[1:] for ap in approachProcedures if ap.startswith("I")]
 
-        usableRws = []
-        for rwy_node in rwy_nodes:
-            rwy_entry,rwy_end=get_landing_rwy_entry_and_end_point(rwy_node,apt,domain=['Rwy'])
-            if rwy_entry[2:] in usableAPs:
-                usableRws.append(rwy_entry)
-        if usableRws:
-            usable_apts_and_rwys.update({apt : usableRws})
+            usableRws = []
+            for rwy_node in rwy_nodes:
+                rwy_entry,rwy_end=get_landing_rwy_entry_and_end_point(rwy_node,apt,domain=['Rwy'])
+                if rwy_entry[2:] in usableAPs:
+                    usableRws.append(rwy_entry)
+            if usableRws:
+                usable_apts_and_rwys.update({apt : usableRws})
     return usable_apts_and_rwys
 
 def get_landing_rwy_entry_and_end_point(landing_rwy_node,airport,domain=['Rwy']):

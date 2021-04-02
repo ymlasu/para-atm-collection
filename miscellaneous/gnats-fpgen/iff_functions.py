@@ -181,17 +181,19 @@ def get_departure_gate_and_rwy_from_iff(iff_data,callsign,gnatsSim,departureAirp
     trackData = trackData[trackData.tas >= minRwySpeed].copy()
     trackData.loc[:,'airportNodes']= [get_closest_node_at_airport(lat,lon,departureAirport) for lat,lon in zip(trackData.latitude,trackData.longitude)]
 
-    runway_segments = [node for node in trackData.airportNodes if 'Rwy' in node]
-    runway_numbers = [seg.split('_')[1] for seg in runway_segments]
-    rwys_opts,counts = np.unique(runway_numbers,return_counts=True)
-    idx = np.argmax(counts)
-    dep_runway_no = rwys_opts[idx]
-    #Get first Rwy segment in trackData that has takeoff_runway_no in it
-    dep_runway_node = [rwy for rwy in runway_segments if dep_runway_no in rwy][-1]
-    # TODO:Check if takeoff_runway_node is an entry point in NATS
-    # If not then find the closest runway entry point in NATS
+    usable_apts_and_rwys = get_usable_apts_and_rwys(gnatsSim)
+    usable_rwys = usable_apts_and_rwys[departureAirport]
+    usable_rwy_entries = [list(gnatsSim.airportInterface.getRunwayEnds(departureAirport,rwy))[1] for rwy in usable_rwys]
 
-        # Get the list of unique nodes identified in the track data
+    runway_segments = [node for node in trackData.airportNodes if 'Rwy' in node]
+    #Get first Rwy segment in trackData that has takeoff_runway_no in it
+    dep_runway_nodes = [rwy for rwy in runway_segments if rwy in usable_rwy_entries]
+    if dep_runway_nodes:
+        rwy_idx = usable_rwy_entries.index(dep_runway_nodes[0])
+        rwy_name = usable_rwys[rwy_idx]
+    else:
+        rwy_name = random.choice(usable_rwys)
+
     unique_nodes = trackData.airportNodes.unique()
     # Get the first node that starts with a gate
     # TODO: Return an error if trackList is empty
@@ -203,9 +205,7 @@ def get_departure_gate_and_rwy_from_iff(iff_data,callsign,gnatsSim,departureAirp
         gateOpts = [opt for opt in gateOpts if opt.lower().startswith('gate')]
         dep_gate = random.choice(gateOpts)
 
-    rwy_entry,rwy_end=get_landing_rwy_entry_and_end_point(dep_runway_node,departureAirport,domain=['Rwy'])
-
-    return dep_gate,rwy_entry
+    return dep_gate,rwy_name
 
 
 def random_airport_gate_and_rwy(gnatsSim,airport,arrival=True):
