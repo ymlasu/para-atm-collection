@@ -5,8 +5,9 @@ GNATS_HOME = os.environ.get('NATS_HOME')
 def get_usable_apts_and_rwys(natsSim):
     apts=list(natsSim.airportInterface.getAllAirportCodesInGNATS())
     usable_apts_and_rwys = {}
+    dumbAirports = ['KMEM','KSNA']
     for apt in apts:
-        if apt[0]=='K':
+        if apt[0]=='K' and apt not in dumbAirports:
             rwys = list(natsSim.airportInterface.getAllRunways(apt))
             rwys= [list(rwy) for rwy in rwys]
             rwy_nodes = [rwy[1] for rwy in rwys]

@@ -42,7 +42,9 @@ def get_departure_airport_from_iff(iff_data,callsign,gnatsSim,arrivalAirport=Non
         print("No viable origin airport found for {}. Returning random from FlightPlanSelector options.".format(callsign,'K'+asdex_airport))
         fplist=[key for key in flmap if (key.endswith(arrivalAirport) or key.endswith(arrivalAirport[1:]))]
         departOpts = [dep.split('-')[0] for dep in fplist]
-        allAirports = [apt[-3:] for apt in allAirports if apt not in [arrivalAirport]]
+        allAirports = [apt[-3:] for apt in allAirports if apt not in [arrivalAirport] and apt[-3:] not in [arrivalAirport[-3:]]]
+        departOpts = [opt[-3:] for opt in departOpts if opt[-3:] in allAirports]
+        print('departOpts:',departOpts)
         origin = random.choice(departOpts)
         origin = origin.rjust(4,'K')
         
@@ -79,7 +81,7 @@ def get_arrival_airport_from_iff(iff_data,callsign,gnatsSim,departureAirport,flm
         print("No viable destination airport found for {}. Returning random from FlightPlanSelector options.".format(callsign,'K'+asdex_airport))
         fplist=[key for key in flmap if (key.startswith(departureAirport) or key.startswith(departureAirport[1:]))]
         departOpts = [dep.split('-')[1] for dep in fplist]
-        allAirports = [apt[-3:] for apt in allAirports if apt not in [departureAirport]]
+        allAirports = [apt[-3:] for apt in allAirports if apt not in [departureAirport] and apt[-3:] not in [departureAirport[-3:]]]
         departOpts = [dep for dep in departOpts if dep[-3:] in allAirports]
         dest = random.choice(departOpts)
         dest = dest.rjust(4,'K')
