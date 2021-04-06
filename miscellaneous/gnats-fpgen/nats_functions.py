@@ -2,6 +2,13 @@ import os
 
 GNATS_HOME = os.environ.get('NATS_HOME')
 
+def get_gate_lat_lon_from_nats(natsSim,gate,airport):
+    import pandas as pd
+    df = pd.read_csv(GNATS_HOME+'/../GNATS_Server/share/libairport_layout/Airport_Rwy/{}_Nodes_Def.csv'.format(airport))
+    lat = df.loc[df['id']==gate]['lat'].values[0]
+    lon = df.loc[df['id']==gate]['lon'].values[0]
+    return lat,lon
+
 def get_usable_apts_and_rwys(natsSim):
     apts=list(natsSim.airportInterface.getAllAirportCodesInGNATS())
     usable_apts_and_rwys = {}

@@ -206,7 +206,8 @@ def get_departure_gate_and_rwy_from_iff(iff_data,callsign,gnatsSim,departureAirp
         gateOpts = gnatsSim.airportInterface.getAllGates(departureAirport)
         gateOpts = [opt for opt in gateOpts if opt.lower().startswith('gate')]
         rwy_node = gnatsSim.airportInterface.getRunwayEnds(departureAirport,rwy_name)[1]
-        dep_gate = get_adjacent_node_closer_to_runway(gateOpts,rwy_node,departureAirport)
+        #dep_gate = get_adjacent_node_closer_to_runway(gateOpts,rwy_node,departureAirport)
+        dep_gate = random.choice(gateOpts)
         
     return dep_gate,rwy_name
 
