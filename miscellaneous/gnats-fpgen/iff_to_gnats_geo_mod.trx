@@ -4,7 +4,7 @@ TRACK ABC123 B744 373700.2892 -1222249.8612 0 0.13 28 ZOA ZOA46
 
 TRACKTIME 1617820321
 TRACK ABC456 B744 384455.3100 -902212.1000 200 100.00 307 ZOA ZOA46
-    FP_ROUTE KSTL.<>.MCI266048..OAL..ZPLYN3.I28R.RW28R.<{"id": "Rwy_04_001"}, {"id": "Txy_C_002"}, {"id": "Txy_C_001"}, {"id": "Rwy_03_001"}, {"id": "Txy_F_001"}, {"id": "Txy_F_002"}, {"id": "Txy_F_003"}, {"id": "Txy_F_004"}, {"id": "Txy_F_N"}, {"id": "Txy_F_005"}, {"id": "Txy_F_L"}, {"id": "Txy_F1_004"}, {"id": "Rwy_02_005"}, {"id": "Txy_F1_003"}, {"id": "Txy_F1_002"}, {"id": "Rwy_01_004"}, {"id": "Txy_F1_001"}, {"id": "Txy_B_F1"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Txy_A_G"}, {"id": "Txy_A_007"}, {"id": "Ramp_03_004"}, {"id": "Ramp_03_003"}, {"id": "Ramp_03_002"}, {"id": "Gate_C_042"}>.KSFO
+    FP_ROUTE KSTL.<>.MCI266048..OAL.ZPLYN3.I10L.RW10L.<{"id": "Rwy_04_001"}, {"id": "Txy_C_002"}, {"id": "Txy_C_001"}, {"id": "Rwy_03_001"}, {"id": "Txy_F_001"}, {"id": "Txy_F_002"}, {"id": "Txy_F_003"}, {"id": "Txy_F_004"}, {"id": "Txy_F_N"}, {"id": "Txy_F_005"}, {"id": "Txy_F_L"}, {"id": "Txy_F1_004"}, {"id": "Rwy_02_005"}, {"id": "Txy_F1_003"}, {"id": "Txy_F1_002"}, {"id": "Rwy_01_004"}, {"id": "Txy_F1_001"}, {"id": "Txy_B_F1"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Txy_A_G"}, {"id": "Txy_A_007"}, {"id": "Ramp_03_004"}, {"id": "Ramp_03_003"}, {"id": "Ramp_03_002"}, {"id": "Gate_C_042"}>.KSFO
 
 TRACKTIME 1617820331
 TRACK DEF123 B744 373711.1000 -1222303.9984 0 0.13 28 ZOA ZOA46
