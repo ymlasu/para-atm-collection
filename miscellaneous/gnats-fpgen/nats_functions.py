@@ -54,7 +54,7 @@ def get_landing_rwy_entry_and_end_point(landing_rwy_node,airport,domain=['Rwy'])
         df_subs_landing = df_subs[df_subs.id==landing_rwy_node]
         entry_point = df_subs_landing.refName1.values[0]
         end_point = df_subs_landing.refName2.values[0]
-
+    
     return entry_point,end_point
 
 def get_closest_node_at_airport(lat,lon,airport,domain=['Rwy','Gate','Txy','Ramp','Parking']):
@@ -83,10 +83,8 @@ def get_adjacent_node_closer_to_runway(nodeList,runwayNode,airport,removed_nodes
     rwy_lon = df.loc[df['id']==runwayNode]['lon'].values[0]
 
     df = df.loc[df['id'].isin([node for node in nodeList if node not in removed_nodes])].copy()
-    print(df.head())
     df['dists']=np.sqrt((df.lat-rwy_lat)**2+(df.lon-rwy_lon)**2)
     closest_node = df.loc[df.dists.idxmin()]['id']
-    print('closest node is:',closest_node)
     return closest_node
 
 def get_closest_airport(gnatsSim,lat,lon,asdex_apt):
@@ -98,7 +96,5 @@ def get_closest_airport(gnatsSim,lat,lon,asdex_apt):
     lats_lons = [list(gnatsSim.airportInterface.getLocation(apt)) for apt in candApts]
     dists = [np.sqrt((entry[0]-lat)**2+(entry[1]-lon)**2) for entry in lats_lons]
     closest_apt = candApts[np.argmin(dists)]
-
-    print('closest airport is:',closest_apt)
     return closest_apt
     

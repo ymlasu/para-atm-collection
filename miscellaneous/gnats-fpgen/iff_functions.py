@@ -44,7 +44,6 @@ def get_departure_airport_from_iff(iff_data,callsign,gnatsSim,arrivalAirport=Non
         departOpts = [dep.split('-')[0] for dep in fplist]
         allAirports = [apt[-3:] for apt in allAirports if apt not in [arrivalAirport] and apt[-3:] not in [arrivalAirport[-3:]]]
         departOpts = [opt[-3:] for opt in departOpts if opt[-3:] in allAirports]
-        print('departOpts:',departOpts)
         origin = random.choice(departOpts)
         origin = origin.rjust(4,'K')
         
@@ -135,8 +134,10 @@ def get_arrival_gate_and_rwy_from_iff(iff_data,callsign,gnatsSim,arrivalAirport,
     rwys_opts,counts = np.unique(runway_numbers,return_counts=True)
     idx = np.argmax(counts)
     arrival_runway_no = rwys_opts[idx]
+    print('Arrival_Runway_No:',arrival_runway_no)
     #Get first Rwy segment in trackData that has takeoff_runway_no in it
     arrival_runway_node = [rwy for rwy in runway_segments if arrival_runway_no in rwy][0]
+    print('Arrival_Runway_Node:s',arrival_runway_node)
     # TODO:Check if takeoff_runway_node is an entry point in NATS
     # If not then find the closest runway entry point in NATS
 
@@ -153,7 +154,7 @@ def get_arrival_gate_and_rwy_from_iff(iff_data,callsign,gnatsSim,arrivalAirport,
         arrival_gate = random.choice(gateOpts)
 
     rwy_entry,rwy_end=get_landing_rwy_entry_and_end_point(arrival_runway_node,arrivalAirport,domain=['Rwy'])
-
+    print('Rwy Entry:',rwy_entry,'Rwy End:',rwy_end)
     return arrival_gate,rwy_end
 
 def get_departure_rwy_from_iff(iff_data,callsign,gnatsSim,departureAirport,minRwySpeed=30.):
@@ -185,16 +186,20 @@ def get_departure_gate_and_rwy_from_iff(iff_data,callsign,gnatsSim,departureAirp
 
     usable_apts_and_rwys = get_usable_apts_and_rwys(gnatsSim)
     usable_rwys = usable_apts_and_rwys[departureAirport]
+    print('Usable_Rwys for Departure:',usable_rwys)
     usable_rwy_entries = [list(gnatsSim.airportInterface.getRunwayEnds(departureAirport,rwy))[1] for rwy in usable_rwys]
-
+    print('Usable Rwy Entries:',usable_rwy_entries)
     runway_segments = [node for node in trackData.airportNodes if 'Rwy' in node]
+    print('Runway Segments:',runway_segments)
     #Get first Rwy segment in trackData that has takeoff_runway_no in it
     dep_runway_nodes = [rwy for rwy in runway_segments if rwy in usable_rwy_entries]
     if dep_runway_nodes:
         rwy_idx = usable_rwy_entries.index(dep_runway_nodes[0])
         rwy_name = usable_rwys[rwy_idx]
+        print('Rwy Name from IFF:',rwy_name)
     else:
         rwy_name = random.choice(usable_rwys)
+        print('Rwy Name from Random:',rwy_name)
 
     unique_nodes = trackData.airportNodes.unique()
     # Get the first node that starts with a gate

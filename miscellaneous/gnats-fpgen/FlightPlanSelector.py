@@ -202,9 +202,6 @@ class FlightPlanSelector:
 			optimalTakeoff = "I" + departureRunway[2:]
 		elif "I" + departureRunway[2:-1] in takeoffProcedures:
 			optimalTakeoff = "I" + departureRunway[2:-1]
-		else:
-			optimalTakeoff = "I" + departureRunway[2:4]
-		print('OptimalTakeoff is:',optimalTakeoff)
 		
 		result_Procedure_leg_names = self.gnatsSim.terminalAreaInterface.getProcedure_leg_names('APPROACH', optimalApproach, destination)
 		if not (result_Procedure_leg_names is None) :
@@ -368,19 +365,16 @@ class FlightPlanSelector:
 		self.selected_takeoff=''
 		if flight_plan_type == self.FLIGHT_PLAN_TYPE_GATE_TO_GATE or flight_plan_type == self.FLIGHT_PLAN_TYPE_RUNWAY_TO_RUNWAY :
 			self.result_terminalProcedure = self.getTerminalProcedures(origin_airport, destination_airport, departure_runway, arrival_runway)
-			print('Length of terminalProcedure is ',len(self.result_terminalProcedure))
 			if len(self.result_terminalProcedure) == 4 :
 				self.selected_sid = self.result_terminalProcedure[0]
 				self.selected_star = self.result_terminalProcedure[1]
 				self.selected_approach = self.result_terminalProcedure[2]
 				self.selected_takeoff = self.result_terminalProcedure[3]
-				print('Selected Takeoff:',self.selected_takeoff)
 			else:
 				self.selected_sid = self.result_terminalProcedure[0]
 				self.selected_star = self.result_terminalProcedure[1]
 				self.selected_approach = self.result_terminalProcedure[2]
 				self.selected_takeoff = ''
-				print('Selected Takeoff:',self.selected_takeoff)
 			
 		if (self.enroute_fp.find("/.") == 0) :
 			self.enroute_fp = self.enroute_fp[2:]
