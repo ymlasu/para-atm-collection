@@ -35,7 +35,7 @@ natsSim = GateToGate()
 Step 3: Create FlightPlanSelector object
 """
 ###################################################################################
-from FlightPlanSelector import FlightPlanSelector
+from paraatm.fpgen import FlightPlanSelector
 dirPath = natsSim.DIR_share
 fpath = dirPath + '/tg/trx/TRX_07132005_noduplicates_crypted'
 f=FlightPlanSelector(natsSim,fname=fpath)
@@ -78,20 +78,21 @@ from jpype import JPackage
 
 from paraatm.fpgen import (get_departure_airport_from_iff,
                            get_arrival_airport_from_iff,
-                           get_departure_gate_and_rwy_from_iff,
-                           get_arrival_gate_and_rwy_from_iff,
-                           random_airport_gate_and_rwy,
-                           check_if_flight_has_departed,
-                           check_if_flight_landing_in_dataset,
-                           get_gate_lat_lon_from_nats)
+                           get_gate_from_iff,
+                           get_rwy_from_iff,
+                           check_if_flight_has_departed_from_iff,
+                           check_if_flight_landing_from_iff,
+                           get_gate_lat_lon_from_nats,
+                           get_random_gate,
+                           get_random_runway)
 
 iffBaseAirport= "KSFO"
 clsGeometry = JPackage('com').osi.util.Geometry
 TRACK_TIME = time.time()
 
 for i,callsign in enumerate(cs[:10]):
-    flightInAir = check_if_flight_has_departed(iff_data,callsign,natsSim,iffBaseAirport)
-    flightLandingInData = check_if_flight_landing_in_dataset(iff_data,callsign,natsSim,iffBaseAirport)
+    flightInAir = check_if_flight_has_departed_from_iff(iff_data,callsign,natsSim,iffBaseAirport)
+    flightLandingInData = check_if_flight_landing_from_iff(iff_data,callsign,natsSim,iffBaseAirport)
     
     arrivalAirport = ''
     departureAirport=''
@@ -105,8 +106,10 @@ for i,callsign in enumerate(cs[:10]):
         #Get departure airport. If none is known in the IFF+ASDEX file (i.e., it is not the airport whose name is in the iff_fname), then set departure airport as closest airport to the first lat/lon in the dataset. In the future, would like to use IFF_USA to determine departureAirport in this case
         arrivalAirport = 'KSFO'
         departureAirport = get_departure_airport_from_iff(iff_data,callsign,natsSim,arrivalAirport=iffBaseAirport,flmap=f.flmap)
-        arrivalGate,arrivalRwy= get_arrival_gate_and_rwy_from_iff(iff_data,callsign,natsSim,arrivalAirport)
-        departureGate,departureRwy = random_airport_gate_and_rwy(natsSim,arrivalAirport)
+        arrivalGate= get_gate_from_iff(iff_data,callsign,natsSim,arrivalAirport)
+        arrivalRwy= get_rwy_from_iff(iff_data,callsign,natsSim,arrivalAirport,arrival=True)
+        departureGate = get_random_gate(natsSim,arrivalAirport)
+        departureRwy = get_random_runway(natsSim,arrivalAirport,arrival=False)
         result_generated = f.generate(4, departureAirport, arrivalAirport, "", arrivalGate, "", arrivalRwy)
         
         timestamp = iff_data[3].loc[iff_data[3].callsign==callsign,'time'].iloc[0]
@@ -121,8 +124,10 @@ for i,callsign in enumerate(cs[:10]):
     if  not flightInAir and not flightLandingInData:
         departureAirport = 'KSFO'
         arrivalAirport = get_arrival_airport_from_iff(iff_data,callsign,natsSim,departureAirport,f.flmap)
-        departureGate,departureRwy = get_departure_gate_and_rwy_from_iff(iff_data,callsign,natsSim,departureAirport) #doesn't exist
-        arrivalGate,arrivalRwy = random_airport_gate_and_rwy(natsSim,arrivalAirport)
+        departureGate = get_gate_from_iff(iff_data,callsign,natsSim,departureAirport)
+        departureRwy = get_rwy_from_iff(iff_data,callsign,natsSim,departureAirport,arrival=False)
+        arrivalGate = get_random_gate(natsSim,arrivalAirport)
+        arrivalRwy = get_random_runway(natsSim,arrivalAirport,arrival=True)
         result_generated = f.generate(1, departureAirport, arrivalAirport, departureGate, arrivalGate, departureRwy, arrivalRwy)
         
         timestamp = iff_data[3].loc[iff_data[3].callsign==callsign,'time'].iloc[0]
@@ -140,10 +145,10 @@ for i,callsign in enumerate(cs[:10]):
         TRACK_TIME +=10
         track_string = '%s %s %.4f %.4f %d %.2f %d %s %s' %(callsign,aircraftType,float(latstr),float(lonstr),spd,elev,hdg,'ZOA','ZOA46')
         fp_route = result_generated[0]
-        #fp_validated = natsSim.aircraftInterface.validate_flight_plan_record(track_string,fp_route,330)
+        fp_validated = natsSim.aircraftInterface.validate_flight_plan_record(track_string,fp_route,330)
+        print('Validated Flight Plan:',callsign)
         fp_validated = True
         if fp_validated:
-            print('Validated Flight Plan:',callsign)
             print(result_generated)
             with open(trx_file,'a') as trxFile:
                 tstr = '%s %s' % ('TRACK',track_string)
