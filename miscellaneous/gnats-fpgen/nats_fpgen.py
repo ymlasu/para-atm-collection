@@ -106,7 +106,7 @@ for i,callsign in enumerate(cs[:10]):
         #Get departure airport. If none is known in the IFF+ASDEX file (i.e., it is not the airport whose name is in the iff_fname), then set departure airport as closest airport to the first lat/lon in the dataset. In the future, would like to use IFF_USA to determine departureAirport in this case
         arrivalAirport = 'KSFO'
         departureAirport = get_departure_airport_from_iff(iff_data,callsign,natsSim,arrivalAirport=iffBaseAirport,flmap=f.flmap)
-        arrivalGate= get_gate_from_iff(iff_data,callsign,natsSim,arrivalAirport)
+        arrivalGate= get_gate_from_iff(iff_data,callsign,natsSim,arrivalAirport,arrival=True)
         arrivalRwy= get_rwy_from_iff(iff_data,callsign,natsSim,arrivalAirport,arrival=True)
         departureGate = get_random_gate(natsSim,arrivalAirport)
         departureRwy = get_random_runway(natsSim,arrivalAirport,arrival=False)
@@ -124,7 +124,7 @@ for i,callsign in enumerate(cs[:10]):
     if  not flightInAir and not flightLandingInData:
         departureAirport = 'KSFO'
         arrivalAirport = get_arrival_airport_from_iff(iff_data,callsign,natsSim,departureAirport,f.flmap)
-        departureGate = get_gate_from_iff(iff_data,callsign,natsSim,departureAirport)
+        departureGate = get_gate_from_iff(iff_data,callsign,natsSim,departureAirport,arrival=False)
         departureRwy = get_rwy_from_iff(iff_data,callsign,natsSim,departureAirport,arrival=False)
         arrivalGate = get_random_gate(natsSim,arrivalAirport)
         arrivalRwy = get_random_runway(natsSim,arrivalAirport,arrival=True)
@@ -146,7 +146,7 @@ for i,callsign in enumerate(cs[:10]):
         track_string = '%s %s %.4f %.4f %d %.2f %d %s %s' %(callsign,aircraftType,float(latstr),float(lonstr),spd,elev,hdg,'ZOA','ZOA46')
         fp_route = result_generated[0]
         fp_validated = natsSim.aircraftInterface.validate_flight_plan_record(track_string,fp_route,330)
-        print('Validated Flight Plan:',callsign)
+        if fp_validated: print('Validated Flight Plan:',callsign)
         fp_validated = True
         if fp_validated:
             print(result_generated)
