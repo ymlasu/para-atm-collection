@@ -1,8 +1,0 @@
-********* TRAJECTORY OUTPUT DATA *********
-** Output Format:
-** simulation_start_time
-** 
-** AC,flight_index,callsign,actype,origin_airport,destination_airport,start_time,simulation_interval_ground,simulation_interval_airborne,cruise_altitude_ft,cruise_tas_knots,origin_airport_elevation_ft,destination_airport_elevation_ft,number_of_trajectory_rec
-** timestamp(UTC sec),latitude,longitude,altitude_ft,rocd_fps,tas_knots,tas_knots_ground,course,fpa,flight_phase
-
--1

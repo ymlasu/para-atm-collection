@@ -35,10 +35,13 @@ natsSim = GateToGate()
 Step 3: Create FlightPlanSelector object
 """
 ###################################################################################
+import os
+import paraatm
 from paraatm.fpgen import FlightPlanSelector
-dirPath = natsSim.DIR_share
-fpath = dirPath + '/tg/trx/TRX_07132005_noduplicates_crypted'
-f=FlightPlanSelector(natsSim,fname=fpath)
+
+dirParaatm = os.path.dirname(paraatm.__file__)
+fname = dirParaatm + '/fpgen/TRX_07132005_noduplicates_crypted'
+f=FlightPlanSelector(natsSim,fname=fname)
 
 ###################################################################################
 """
