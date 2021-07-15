@@ -1,11 +1,15 @@
-# Markdown file
+# UAS_ObstacleAvoidance_SafetyBound_RL
+
+Author: Jueming Hu, Arizona State University
+
+Email: Jueming.Hu@asu.edu
 
 This module demonstrates UAS obstacle avoidance with a risk-based safety bound using reinforcement learning.
 
--main_RL_train_result.ipynb: main file for training and visualization
+- main_RL_train_result.ipynb: main file for training and visualization
 
--boundSize.py: check potential collision among different shapes.
+- boundSize.py: check potential collision among different shapes.
 
--multiPoly_bound.py: define RL environment, including transition model and reward function.
+- multiPoly_bound.py: define RL environment, including transition model and reward function.
 
--plotting.py: visualization of RL training process
+- plotting.py: visualization of RL training process
