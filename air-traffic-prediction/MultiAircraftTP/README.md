@@ -1,5 +1,5 @@
 # Data-Driven Uncertainty Aware Multi-Aircraft Trajectory Prediction in the Near Terminal Airspace 
-Author: Yutian Pang, Arizona State University
+Author: Yutian Pang, Arizona State University <br>
 Email: yutian.pang@asu.edu
 
 ## Bayesian Spatiotemporal Graph Transformer Network (B-STAR)
