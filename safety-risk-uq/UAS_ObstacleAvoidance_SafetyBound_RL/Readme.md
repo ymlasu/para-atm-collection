@@ -7,6 +7,7 @@ Email: Jueming.Hu@asu.edu
 This module demonstrates UAS obstacle avoidance with a risk-based safety bound using reinforcement learning.
 
 The detailed information can be found [here](https://arc.aiaa.org/doi/abs/10.2514/6.2020-1372)
+
 @inproceedings{hu2020uas,
   title={UAS Conflict Resolution Integrating a Risk-Based Operational Safety Bound as Airspace Reservation with Reinforcement Learning},
   author={Hu, Jueming and Liu, Yongming},
