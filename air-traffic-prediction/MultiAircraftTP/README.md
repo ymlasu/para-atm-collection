@@ -1,4 +1,6 @@
 # Data-Driven Uncertainty Aware Multi-Aircraft Trajectory Prediction in the Near Terminal Airspace 
+Author: Yutian Pang, Arizona State University
+Email: yutian.pang@asu.edu
 
 ## Bayesian Spatiotemporal Graph Transformer Network (B-STAR)
 This unpublished work is following this [paper](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123570494.pdf) and extended into Bayesian sense for uncertainty quantification. This model is test to have state-of-the-art performance on the ETH/UCY dataset for pedestrain trajectory prediction, with reliable uncertainty estimates. Then we apply this framework to near-terminal multi-aircraft trajectory prediction task. 
