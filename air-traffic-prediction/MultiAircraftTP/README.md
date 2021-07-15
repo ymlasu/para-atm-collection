@@ -18,6 +18,6 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 - Traning is performed using data from Aug 1st, 2019 to Aug 6th, 2019. 
 - Testing with data on Aug 7th, 2019.
 - Neighboring aircrafts maximum radar separation limit 30km. 
-- Obervation/prediction ratio 3:2.
+- Observation/prediction time horizon ratio 3:2.
 
 Code borrowed heavily from [here](https://github.com/Majiker/STAR)
