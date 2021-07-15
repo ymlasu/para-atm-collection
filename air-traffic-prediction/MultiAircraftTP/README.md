@@ -20,4 +20,4 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 - Neighboring aircrafts maximum radar separation limit 30km. 
 - Observation/prediction time horizon ratio 3:2.
 
-Code borrowed heavily from [here](https://github.com/Majiker/STAR)
+Code of Part 2 borrowed heavily from [here](https://github.com/Majiker/STAR)
