@@ -1,0 +1,95 @@
+TRACKTIME 1620747345
+TRACK DAL2312 B744 395142.0000 -1044023.4000 300 110.75 172 ZOA ZOA46
+    FP_ROUTE KDEN.<>.EKR..OAL.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_009"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Txy_A_G"}, {"id": "Txy_A_007"}, {"id": "Txy_A_006"}, {"id": "Txy_A_005"}, {"id": "Txy_A_H"}, {"id": "Txy_A_004"}, {"id": "Txy_H_006"}, {"id": "Txy_H_005"}, {"id": "Txy_H_004"}, {"id": "Txy_H_003"}, {"id": "Ramp_02_005"}, {"id": "Ramp_02_004"}, {"id": "Ramp_02_003"}, {"id": "Ramp_02_002"}, {"id": "Gate_B_022"}>.KSFO
+
+TRACKTIME 1620747355
+TRACK UAL2377 B744 373715.4920 -1222318.5280 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_F_082"}, {"id": "Ramp_06_009"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_009"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Txy_A_G"}, {"id": "Txy_A_007"}, {"id": "Txy_A_006"}, {"id": "Txy_A_005"}, {"id": "Txy_A_H"}, {"id": "Txy_A_004"}, {"id": "Txy_A_M"}, {"id": "Txy_A_003"}, {"id": "Txy_A_002"}, {"id": "Txy_A_A1"}, {"id": "Txy_A_001"}, {"id": "Rwy_02_001"}, {"id": "Rwy_02_002"}>.RW01R.MVA..EKR..DVV..MCK..PWE..IRK..CAP..DNV.<>.KCVG
+
+TRACKTIME 1620747365
+TRACK UAL863 B744 373708.9760 -1222336.0600 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_G_100"}, {"id": "Ramp_07_007"}, {"id": "Txy_B_B5"}, {"id": "Txy_B5_001"}, {"id": "Txy_A_B4"}, {"id": "Txy_A_B3"}, {"id": "Txy_A_B2"}, {"id": "Txy_A_B1"}, {"id": "Txy_A_016"}, {"id": "Txy_A_015"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.LCU..DBQ..<>.KORD
+
+TRACKTIME 1620747375
+TRACK DAL806 B744 373652.3440 -1222300.3120 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_C_040"}, {"id": "Ramp_03_001"}, {"id": "Ramp_03_002"}, {"id": "Ramp_03_003"}, {"id": "Ramp_03_004"}, {"id": "Txy_A_007"}, {"id": "Txy_A_006"}, {"id": "Txy_A_005"}, {"id": "Txy_A_H"}, {"id": "Txy_A_004"}, {"id": "Txy_A_M"}, {"id": "Txy_A_003"}, {"id": "Txy_A_002"}, {"id": "Txy_A_A1"}, {"id": "Txy_A_001"}, {"id": "Rwy_02_001"}, {"id": "Rwy_02_002"}>.RW01R.SAC..BAM..DPR..RWF.<>.KMSP
+
+TRACKTIME 1620747385
+TRACK UAL748 B744 421244.8000 -832112.2000 240 100.00 310 ZOA ZOA46
+    FP_ROUTE KDTW.<>.GRB..ODI..MCW..OAL.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_009"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Txy_A_G"}, {"id": "Txy_A_007"}, {"id": "Txy_A_006"}, {"id": "Txy_A_005"}, {"id": "Txy_A_H"}, {"id": "Txy_A_004"}, {"id": "Txy_H_006"}, {"id": "Txy_H_005"}, {"id": "Txy_H_004"}, {"id": "Txy_H_003"}, {"id": "Ramp_02_005"}, {"id": "Gate_B_36B"}>.KSFO
+
+TRACKTIME 1620747395
+TRACK UAL210 B744 351249.5000 -805656.6000 190 100.00 309 ZOA ZOA46
+    FP_ROUTE KCLT.<>.GQO..RZC..ICT..PUB..HBU..HVE..MLF..OAL.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_B_B1"}, {"id": "Txy_B_B2"}, {"id": "Txy_A_B2"}, {"id": "Txy_A_B3"}, {"id": "Txy_A_B4"}, {"id": "Ramp_06_015"}, {"id": "Ramp_06_016"}, {"id": "Ramp_06_017"}, {"id": "Ramp_06_018"}, {"id": "Ramp_06_019"}, {"id": "Ramp_06_020"}, {"id": "Gate_F_081"}>.KSFO
+
+TRACKTIME 1620747405
+TRACK JBU1715 B744 335632.9800 -1182428.9800 191 100.00 310 ZOA ZOA46
+    FP_ROUTE KLAX.<>.RZS.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_009"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Ramp_04_004"}, {"id": "Ramp_04_003"}, {"id": "Gate_D_51B"}>.KSFO
+
+TRACKTIME 1620747415
+TRACK UAL2732 B744 373714.7360 -1222326.2680 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_06_017"}, {"id": "Ramp_06_014"}, {"id": "Txy_A_B4"}, {"id": "Txy_A_B3"}, {"id": "Txy_A_B2"}, {"id": "Txy_A_B1"}, {"id": "Txy_A_016"}, {"id": "Txy_A_015"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.SAC..REO..<>.KBOI
+
+TRACKTIME 1620747425
+TRACK SIA1 B744 373706.7440 -1222330.5880 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_G_096"}, {"id": "Ramp_07_004"}, {"id": "Ramp_07_005"}, {"id": "Ramp_07_006"}, {"id": "Ramp_07_007"}, {"id": "Txy_B_B5"}, {"id": "Txy_B5_001"}, {"id": "Txy_A_B4"}, {"id": "Txy_A_B3"}, {"id": "Txy_A_B2"}, {"id": "Txy_A_B1"}, {"id": "Txy_A_016"}, {"id": "Txy_A_015"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.SAC..REO..<>.KBOI
+
+TRACKTIME 1620747435
+TRACK FFT662 B744 373642.7680 -1222316.1520 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_05_010"}, {"id": "Ramp_05_009"}, {"id": "Ramp_05_008"}, {"id": "Ramp_05_007"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_009"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Txy_A_G"}, {"id": "Txy_A_007"}, {"id": "Txy_A_006"}, {"id": "Txy_A_005"}, {"id": "Txy_A_H"}, {"id": "Txy_A_004"}, {"id": "Txy_A_M"}, {"id": "Txy_A_003"}, {"id": "Txy_A_002"}, {"id": "Txy_A_A1"}, {"id": "Txy_A_001"}, {"id": "Rwy_02_001"}, {"id": "Rwy_02_002"}>.RW01R.SAC..ILC..BCE..RSK..PNH..SPS..TXK..JAN.MEI..OTK.<>.KMCO
+
+TRACKTIME 1620747445
+TRACK CPA851 B744 373640.8960 -1222317.3040 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_E_062"}, {"id": "Ramp_05_002"}, {"id": "Ramp_05_003"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.RBL..FMG..LLC..BAM..ONL..JAVAS..BDF.<>.KMDW
+
+TRACKTIME 1620747455
+TRACK EVA017 B744 373705.0160 -1222324.9720 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_G_092"}, {"id": "Ramp_07_002"}, {"id": "Ramp_07_003"}, {"id": "Ramp_07_004"}, {"id": "Ramp_07_005"}, {"id": "Ramp_07_006"}, {"id": "Ramp_07_007"}, {"id": "Txy_B_B5"}, {"id": "Txy_B5_001"}, {"id": "Txy_A_B4"}, {"id": "Txy_A_B3"}, {"id": "Txy_A_B2"}, {"id": "Txy_A_B1"}, {"id": "Txy_A_016"}, {"id": "Txy_A_015"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.MVA..DTA..EKR..MCK..IRK..BVT..ROD..APE..MGW.<>.KIAD
+
+TRACKTIME 1620747465
+TRACK EJA110 B744 384455.3100 -902212.1000 122 100.00 316 ZOA ZOA46
+    FP_ROUTE KSTL.<>.MCI..OAL..DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Ramp_05_007"}, {"id": "Ramp_05_008"}, {"id": "Ramp_05_009"}, {"id": "Gate_05_010"}>.KSFO
+
+TRACKTIME 1620747475
+TRACK CAL003 B744 373643.8120 -1222320.7240 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_A_005"}, {"id": "Txy_H_001"}, {"id": "Txy_H_002"}, {"id": "Txy_H_003"}, {"id": "Txy_H_004"}, {"id": "Txy_H_005"}, {"id": "Txy_H_006"}, {"id": "Txy_A_004"}, {"id": "Txy_A_H"}, {"id": "Txy_B_H"}, {"id": "Txy_H_007"}, {"id": "Rwy_01_002"}, {"id": "Txy_H_008"}, {"id": "Txy_H_009"}, {"id": "Rwy_02_004"}, {"id": "Txy_G_005"}, {"id": "Txy_L_004"}, {"id": "Txy_L_005"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.SAC..BAM..MLD..DDY..ONL..DSM..BDF..ROD..APE..AIR.<>.KBWI
+
+TRACKTIME 1620747485
+TRACK EVA027 B744 373709.7680 -1222329.6160 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_G_92A"}, {"id": "Ramp_07_001"}, {"id": "Ramp_07_002"}, {"id": "Ramp_07_003"}, {"id": "Ramp_07_004"}, {"id": "Ramp_07_005"}, {"id": "Ramp_07_006"}, {"id": "Ramp_07_007"}, {"id": "Txy_B_B5"}, {"id": "Txy_B5_001"}, {"id": "Txy_A_B4"}, {"id": "Txy_A_B3"}, {"id": "Txy_A_B2"}, {"id": "Txy_A_B1"}, {"id": "Txy_A_016"}, {"id": "Txy_A_015"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.SAC.BAM.CZI.RAP.ABR..CESNA..SSM..TULEG..ENE..SCUPP..<>.KBOS
+
+TRACKTIME 1620747495
+TRACK AIC184 B744 373702.3880 -1222337.0680 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_A_011"}, {"id": "Ramp_01_005"}, {"id": "Ramp_01_006"}, {"id": "Ramp_01_007"}, {"id": "Txy_M_H"}, {"id": "Txy_H_001"}, {"id": "Txy_H_002"}, {"id": "Txy_H_003"}, {"id": "Txy_H_004"}, {"id": "Txy_H_005"}, {"id": "Txy_H_006"}, {"id": "Txy_A_004"}, {"id": "Txy_A_H"}, {"id": "Txy_B_H"}, {"id": "Txy_H_007"}, {"id": "Rwy_01_002"}, {"id": "Txy_H_008"}, {"id": "Txy_H_009"}, {"id": "Rwy_02_004"}, {"id": "Txy_G_005"}, {"id": "Txy_L_004"}, {"id": "Txy_L_005"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.RBL..FMG..LLC..BAM..ONL..JAVAS..BDF.<>.KMDW
+
+TRACKTIME 1620747505
+TRACK CMP383 B744 373643.4160 -1222317.0160 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_E_060"}, {"id": "Ramp_05_001"}, {"id": "Ramp_05_002"}, {"id": "Ramp_05_003"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_B"}, {"id": "Txy_F_010"}, {"id": "Txy_F_009"}, {"id": "Rwy_01_005"}, {"id": "Txy_F_008"}, {"id": "Txy_F_007"}, {"id": "Rwy_02_006"}, {"id": "Txy_F_006"}, {"id": "Txy_F_L"}, {"id": "Txy_F_005"}, {"id": "Txy_F_N"}, {"id": "Txy_F_004"}, {"id": "Txy_F_003"}, {"id": "Txy_F_002"}, {"id": "Txy_F_001"}, {"id": "Rwy_03_001"}>.RW28L.SAC..SAC..LIDAT..BLD..FST.<>.KSAT
+
+TRACKTIME 1620747515
+TRACK TAI561 B744 373643.2360 -1222330.8400 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_B_36B"}, {"id": "Ramp_02_005"}, {"id": "Txy_H_003"}, {"id": "Txy_H_004"}, {"id": "Txy_H_005"}, {"id": "Txy_H_006"}, {"id": "Txy_A_004"}, {"id": "Txy_A_M"}, {"id": "Txy_B_M"}, {"id": "Txy_M_002"}, {"id": "Rwy_01_001"}>.RW01L.SAC.BAM.CZI.RAP.ABR..CESNA..SSM..TULEG..RKA..HNK.<>.KEWR
+
+TRACKTIME 1620747525
+TRACK AAL1742 B744 404718.2200 -1115839.9800 174 100.00 308 ZOA ZOA46
+    FP_ROUTE KSLC.<>.BVL..SPRUZ..MVA.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Ramp_04_011"}, {"id": "Gate_D_56B"}>.KSFO
+
+TRACKTIME 1620747535
+TRACK JBU333 B744 403823.7300 -734643.3000 104 110.94 154 ZOA ZOA46
+    FP_ROUTE KJFK.<>.BUF..GRB..GEP..ABR..MLD..MVA.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Txy_A_D"}, {"id": "Txy_A_010"}, {"id": "Txy_A_E"}, {"id": "Txy_A_009"}, {"id": "Txy_A_F1"}, {"id": "Txy_A_008"}, {"id": "Ramp_03_007"}, {"id": "Gate_C_045"}>.KSFO
+
+TRACKTIME 1620747545
+TRACK GTI2858 B744 373808.5560 -1222312.9480 0 0.13 28 ZOA ZOA46
+    FP_ROUTE KSFO.<{"id": "Gate_C_040"}, {"id": "Ramp_03_001"}, {"id": "Ramp_03_002"}, {"id": "Ramp_03_003"}, {"id": "Ramp_03_004"}, {"id": "Txy_A_007"}, {"id": "Txy_A_G"}, {"id": "Txy_A_008"}, {"id": "Txy_A_F1"}, {"id": "Txy_B_F1"}, {"id": "Txy_F1_001"}, {"id": "Rwy_01_004"}, {"id": "Txy_F1_002"}, {"id": "Txy_F1_003"}, {"id": "Rwy_02_005"}, {"id": "Txy_F1_004"}, {"id": "Txy_F_L"}, {"id": "Txy_L_006"}, {"id": "Rwy_03_004"}, {"id": "Txy_L_007"}, {"id": "Txy_L_008"}, {"id": "Rwy_04_006"}, {"id": "Txy_L_009"}, {"id": "Txy_C_L"}, {"id": "Txy_L_V"}, {"id": "Txy_L_E"}, {"id": "Txy_L_010"}, {"id": "Txy_L_011"}, {"id": "Rwy_02_011"}>.RW19L.WAGES..BOILE..BLH..TFD..ELP..CLL.<>.KIAH
+
+TRACKTIME 1620747555
+TRACK UAL955 B744 254743.3000 -801724.4000 347 110.69 153 ZOA ZOA46
+    FP_ROUTE KMIA.<>.SRQ..REDFN..HRV..FUZ..TXO..LVS..RSK..MLF..MLF..OAL.DYAMD5.I28L.RW28L.<{"id": "Rwy_03_011"}, {"id": "Txy_S1_001"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_B_B1"}, {"id": "Txy_B_B2"}, {"id": "Txy_B_B3"}, {"id": "Txy_B_B4"}, {"id": "Txy_B_B5"}, {"id": "Ramp_07_007"}, {"id": "Ramp_07_006"}, {"id": "Ramp_07_005"}, {"id": "Ramp_07_004"}, {"id": "Gate_G_096"}>.KSFO
+
+TRACKTIME 1620747565
+TRACK UAL396 B744 453519.3500 -1223548.7300 185 100.00 336 ZOA ZOA46
+    FP_ROUTE KPDX.<>.JADNU..ENVIE..DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_B_B1"}, {"id": "Txy_A_B1"}, {"id": "Ramp_06_011"}, {"id": "Gate_F_086"}>.KSFO
+
+TRACKTIME 1620747575
+TRACK UAL1092 B744 335632.9800 -1182428.9800 184 100.00 315 ZOA ZOA46
+    FP_ROUTE KLAX.<>.RZS.DYAMD5.I28R.RW28R.<{"id": "Rwy_04_018"}, {"id": "Txy_S_002"}, {"id": "Txy_S2_002"}, {"id": "Txy_S_001"}, {"id": "Txy_S_R"}, {"id": "Txy_Z_R"}, {"id": "Txy_Z_S1"}, {"id": "Txy_Z_B1"}, {"id": "Txy_Z_Q"}, {"id": "Txy_B_003"}, {"id": "Txy_Q1_001"}, {"id": "Txy_A_014"}, {"id": "Txy_A_K"}, {"id": "Txy_A_013"}, {"id": "Txy_A_012"}, {"id": "Txy_A_011"}, {"id": "Ramp_05_006"}, {"id": "Gate_E_066"}>.KSFO

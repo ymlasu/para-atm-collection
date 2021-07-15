@@ -16,9 +16,9 @@ import sys
 
 from paraatm.io.nats import NatsEnvironment
 
-from demo_2ac import TwoAcSim
+from natsSim import NatsSim
 
-def calc_sep_distance_vs_time(df):
+def calc_min_sep_distance(df):
     """Compute separation distance vs time for two aircraft
     
     Note: this function is for demonstration only.  For simplicity, it
@@ -40,16 +40,23 @@ def calc_sep_distance_vs_time(df):
         distance
     """
     callsigns = df['callsign'].unique()
+    min_dists = []
     def extract_single_ac_data(callsign):
         return df.loc[df['callsign'] == callsign, ['time','latitude','longitude']].set_index('time').resample('1T').mean()
-    df1 = extract_single_ac_data(callsigns[0])
-    df2 = extract_single_ac_data(callsigns[1])
+    
+    for cs_i in callsigns:
+        for cs_j in callsigns:
+            if not cs_i==cs_j:
+                df1 = extract_single_ac_data(cs_i)
+                df2 = extract_single_ac_data(cs_j)
 
-    new_df = df1.merge(df2, left_index=True, right_index=True)
-    # Todo: use a better separation distance calculation.  This is just an L2 distance of the lat/long, but may be better to first compute a projection of the coordinates
-    new_df['sep'] = new_df.apply(lambda row: np.sqrt((row['latitude_x'] - row['latitude_y'])**2 + (row['longitude_x'] - row['longitude_y'])**2), axis=1)
+                new_df = df1.merge(df2, left_index=True, right_index=True)
+                # Todo: use a better separation distance calculation.  This is just an L2 distance of the lat/long, but may be better to first compute a projection of the coordinates
+                new_df['sep'] = new_df.apply(lambda row: np.sqrt((row['latitude_x'] - row['latitude_y'])**2 + (row['longitude_x'] - row['longitude_y'])**2), axis=1)
 
-    return new_df
+                min_dists.append(np.min(new_df['sep'].values))
+
+    return np.min(np.array(min_dists))
 
 if __name__ == '__main__':
     input_file, output_file = sys.argv[1:]
@@ -58,15 +65,14 @@ if __name__ == '__main__':
         input_data = [float(x) for x in f.readline().split()]
 
     print('Running NATS simulation with input:', input_data)
-    sim = TwoAcSim()
+    sim = NatsSim()
     # Execute the simulation.  Note that we also explicitly pass a
     # value for output_file, so that we get a record of the output
     # file.  Conveniently, UQpy coordinates each run in a separate
     # directory, so we will have a record of the NATS trajectory
     # output for each individual simulation that is performed.
-    df = sim(output_file='nats_output.csv', latitude=input_data[0], longitude=input_data[1])['trajectory']
-    sep = calc_sep_distance_vs_time(df)
-    result = sep['sep'].iloc[-1]
+    df = sim(output_file='nats_output.csv', cont_resp=input_data[0])['trajectory']
+    result = calc_min_sep_distance(df)
     print('Separation distance:', result)
     print('Wrote results to:', output_file)
     # Running NATS requires a directory change.  By stopping the JVM
