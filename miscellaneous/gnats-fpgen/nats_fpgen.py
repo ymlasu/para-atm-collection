@@ -148,8 +148,9 @@ for i,callsign in enumerate(cs):
 
         timestamp = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'time'].iloc[0]
         lat = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'latitude'].iloc[0]
-        lon = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'longitude'].iloc[0] 
-
+        lon = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'longitude'].iloc[0]        
+        simLat,simLon = list(natsSim.airportInterface.getLocation(departureAirport))
+        
         #Get departure airport. If none is known in the IFF+ASDEX file (i.e., it is not the airport whose name is in the iff_fname), then set departure airport as closest airport to the first lat/lon in the dataset. In the future, would like to use IFF_USA to determine departureAirport in this case
         arrivalAirport = 'KSFO'
         departureAirport = get_departure_airport_from_iff(iff_data,callsign,bcnCode,lat,lon,natsSim,arrivalAirport=iffBaseAirport,flmap=f.flmap)
@@ -158,11 +159,6 @@ for i,callsign in enumerate(cs):
         departureGate = get_random_gate(natsSim,arrivalAirport)
         departureRwy = get_random_runway(natsSim,arrivalAirport,arrival=False)
         result_generated = f.generate(4, departureAirport, arrivalAirport, "", arrivalGate, "", arrivalRwy)
-        
-        timestamp = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'time'].iloc[0]
-        lat = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'latitude'].iloc[0]
-        lon = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'longitude'].iloc[0]        
-        simLat,simLon = list(natsSim.airportInterface.getLocation(departureAirport))
 
         latstr = clsGeometry.convertLatLonDeg_to_degMinSecString(str(simLat))
         lonstr = clsGeometry.convertLatLonDeg_to_degMinSecString(str(simLon))
@@ -170,6 +166,11 @@ for i,callsign in enumerate(cs):
         spd = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'tas'].iloc[0]
         hdg = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode),'heading'].iloc[0]
         aircraftType = 'B744'
+
+        arrivalAirportElevation = natsSim.airportInterface.select_airport(arrivalAirport).getElevation()
+        landingTime = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode) & (iff_data[3].altitude==arrivalAirportElevation),'time'].iloc[0]
+        landingLat = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode) & (iff_data[3].altitude==arrivalAirportElevation),'latitude'].iloc[0]
+        landingLon = iff_data[3].loc[(iff_data[3].callsign==callsign) & (iff_data[3].bcnCode==bcnCode) & (iff_data[3].altitude==arrivalAirportElevation),'longitude'].iloc[0]
 
     # if  opsType=='D' and flightDepartureInData:
     #     departureAirport = 'KSFO'
@@ -196,6 +197,7 @@ for i,callsign in enumerate(cs):
         print("Flight " + callsign + " result not generated")
     else:
         TRACK_TIME = (timestamp-pd.Timestamp("1970-01-01")) // pd.Timedelta('1s')
+        LANDING_TIME = (landingTime-pd.Timestamp("1970-01-01")) // pd.Timedelta('1s')
         #TRACK_TIME +=10
         track_string = '%s %s %.4f %.4f %d %.2f %d %s %s' %(callsign,aircraftType,float(latstr),float(lonstr),spd,elev,hdg,'ZOA','ZOA46')
         fp_route = result_generated[0]
@@ -215,7 +217,7 @@ for i,callsign in enumerate(cs):
                 mflFile.write(callsign + ' ' + '330' + '\n')
 
             with open(coord_file,'a') as coordFile:
-                coordFile.write(callsign + ' ' + str(TRACK_TIME) + ' ' + str(lat) + ' ' + str(lon) + '\n')
+                coordFile.write(callsign + ' ' + str(TRACK_TIME) + ' ' + str(lat) + ' ' + str(lon) + ' ' + str(LANDING_TIME) + ' ' + str(landingLat) + ' ' + str(landingLon) + '\n')
 
         elif not fp_validated:
             print('This flight plan was not validated:\n', result_generated[0])
