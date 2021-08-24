@@ -1,0 +1,13 @@
+For demonstration with Jupyter, use "Demonstration_aircraft_model.ipynb"
+Otherwise, use "demo_1.py"
+
+
+ Demonstartion of the physics and data informed aircraft dynamics model
+ This covers the following:
+ 1. Extracting trajectory data from a public database (FlightAware)
+ 2. Analyzing the extracted data to detect flight phases and the following items of interest:
+    (a) detecting step climb during the cruise phase, and
+    (b) testing whether the aircraft was held at a constant altitude during descent
+ 3. Demonstration of the composite aircraft dynamics model 
+    (a) Plotting the effective thrust force experienced by the aircraft]
+    (b) Evaluating model form errors during various flight phases
