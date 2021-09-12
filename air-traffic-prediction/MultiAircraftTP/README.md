@@ -8,7 +8,7 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 
 ## The code for the multi-aircraft case study is shown in three parts:
 - [x] Part 1: IFF ASDE-X Data Processing Demo
-- [ ] Part 2: B-STAR Model Training Code
+- [x] Part 2: B-STAR Model Training Code
 - [x] Part 3: Visualization Demo
 
 
@@ -21,5 +21,3 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 - Testing with data on Aug 7th, 2019.
 - Neighboring aircrafts maximum radar separation limit 30km. 
 - Observation/prediction time horizon ratio 3:2.
-
-Code of Part 2 borrowed heavily from [here](https://github.com/Majiker/STAR)
