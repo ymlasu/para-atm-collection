@@ -1,5 +1,5 @@
 # Data-Driven Uncertainty Aware Multi-Aircraft Trajectory Prediction in the Near Terminal Airspace 
-Author: Yutian Pang
+Author: Yutian Pang, Arizona State University <br>
 Email: yutian.pang@asu.edu
 
 # B-STAR
