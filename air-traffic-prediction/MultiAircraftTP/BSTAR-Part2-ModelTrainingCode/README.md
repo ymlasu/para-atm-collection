@@ -1,5 +1,6 @@
 # Data-Driven Uncertainty Aware Multi-Aircraft Trajectory Prediction in the Near Terminal Airspace 
-
+Author: Yutian Pang
+Email: yutian.pang@asu.edu
 
 # B-STAR
 Code repository for the AAAI submission of paper entitled: Bayesian Spatio-Temporal Graph Transformer Network for Near-Terminal Multi-Aircraft Trajectory Prediction with Uncertainties
