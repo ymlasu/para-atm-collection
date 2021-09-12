@@ -46,7 +46,7 @@ During training, the trained model wth a new best FDE on the test dataset will b
 In ```\src```, there are multiple Python scripts,
 
 - ```utils.py```: Data pre-processing before training. For instance, using the previous command, there will be 24 training batches and 7 testing batches.
-- ```lrt_linear.py```: Bayesian Linear Layer used to build the decoder using locao reparameterization trick.
+- ```lrt_linear.py```: Bayesian Linear Layer used to build the decoder using local reparameterization trick.
 - ```multi_attention_forward.py```: The multi-head attention layer.
 - ```bstar.py```: The code to build the B-STAR architecture.
 - ```processor.py```: Training and testing function.
