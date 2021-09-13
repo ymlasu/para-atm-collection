@@ -16,13 +16,13 @@ pip install tqdm=4.45.0
 ```
 
 ### Data
-The data source used are ASDE-X data from Sherlock. However, we anonymized the data by,
+The data source used are ASDE-X data from Sherlock. Here, we anonymized the data by,
 
 - Remove the real-world unix timestamp and replace them by absolute time steps (e.g. 5, 10, 15, 20).
 - The flight callsign are masked with a unique agent id (integer).
 - For this experiment, only four columns of ASDE-X needed. They are time, id, latitude, longitude.
 
-The code used for processing and anonymized the raw ASDE-X data can be found in Part 1 Data Processing Demo. Data are saved in ```/data/iff/atl/2019080x/true_pos_.csv```
+The code used for processing and anonymized the raw ASDE-X data can be found in Part 1 Data Processing Demo. Data are saved in ```./data/iff/atl/2019080x/true_pos_.csv```
 
 
 ### To Train an Example
@@ -43,7 +43,7 @@ During training, the trained model wth a new best FDE on the test dataset will b
 
 
 ### Source Code
-In ```\src```, there are multiple Python scripts,
+In ```./src```, there are multiple Python scripts,
 
 - ```utils.py```: Data pre-processing before training. For instance, using the previous command, there will be 24 training batches and 7 testing batches.
 - ```lrt_linear.py```: Bayesian Linear Layer used to build the decoder using local reparameterization trick.
