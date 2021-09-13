@@ -23,4 +23,4 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 - Observation/prediction time horizon ratio 3:2.
 
 ## Please cite our work if you found this is useful
-- [] To be posted
+- [ ] To be posted
