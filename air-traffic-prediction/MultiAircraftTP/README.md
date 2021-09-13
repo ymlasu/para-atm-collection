@@ -14,10 +14,10 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 
 ## Near-Terminal Airspace Multi-Aircraft Trajectory Prediction 
 - IFF ASDE-X data area of interests
-  - 2 degrees latitude/longitude range near KATL [33.6366996, -84.4278640].
-  - 4 hours duration each day since 2 pm.
-  - Track points time interval 10s.
+  - 0.2 degrees latitude/longitude range near KATL [33.6366996, -84.4278640].
+  - 8 hours duration each day since 2 pm.
+  - Track points time interval 5s.
 - Traning is performed using data from Aug 1st, 2019 to Aug 6th, 2019. 
 - Testing with data on Aug 7th, 2019.
-- Neighboring aircrafts maximum radar separation limit 30km. 
+- Neighboring aircrafts maximum radar separation limit 10km. 
 - Observation/prediction time horizon ratio 3:2.
