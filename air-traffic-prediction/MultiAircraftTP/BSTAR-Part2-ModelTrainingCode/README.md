@@ -3,8 +3,7 @@ Author: Yutian Pang, Arizona State University <br>
 Email: yutian.pang@asu.edu
 
 # B-STAR
-Code repository for the AAAI submission of paper entitled: Bayesian Spatio-Temporal Graph Transformer Network for Near-Terminal Multi-Aircraft Trajectory Prediction with Uncertainties
-
+Code repository for the paper entitled: Bayesian Spatio-Temporal Graph Transformer Network (B-STAR) for Multi-Aircraft Trajectory Prediction
 
 ### Environment
 
@@ -20,7 +19,8 @@ The data source used are ASDE-X data from Sherlock. Here, we anonymized the data
 
 - Remove the real-world unix timestamp and replace them by absolute time steps (e.g. 5, 10, 15, 20).
 - The flight callsign are masked with a unique agent id (integer).
-- For this experiment, only four columns of ASDE-X needed. They are time, id, latitude, longitude.
+
+For this experiment, only four columns of ASDE-X needed. They are time, id, latitude, longitude.
 
 The code used for processing and anonymized the raw ASDE-X data can be found in Part 1 Data Processing Demo. Data are saved in ```./data/iff/atl/2019080x/true_pos_.csv```
 
@@ -35,11 +35,11 @@ python trainval.py --num_epochs 300 --start_test 250 --neighbor_thred 10 --skip 
 The model will be trained for 300 epochs, and the testing start at epoch 250, with a learning rate of 0.0015. In the test phase, the trained model will be sampled 20 times.
 
 And with the following paramaters, 
-- The neighboring aircraft threshold is 10km(~5nm). 
+- The neighboring aircraft threshold is 10km (~3nm). 
 - The timestamp in the processed flight data is 5 seconds. 
 - The total length of the sequence is 20 timestamps, where observation is 12 timestamps, prediction is 8 timestamps.
 
-During training, the trained model wth a new best FDE on the test dataset will be saved in the output folder.
+During training, the trained model with a new best FDE on the test dataset will be saved in the output folder.
 
 
 ### Source Code
