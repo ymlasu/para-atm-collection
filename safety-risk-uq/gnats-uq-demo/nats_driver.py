@@ -55,7 +55,7 @@ def calc_min_sep_distance(df):
                 new_df['sep'] = new_df.apply(lambda row: np.sqrt((row['latitude_x'] - row['latitude_y'])**2 + (row['longitude_x'] - row['longitude_y'])**2), axis=1)
 
                 min_dists.append(np.min(new_df['sep'].values))
-
+                print("{}:{} - {}".format(cs_i,cs_j,np.min(new_df['sep'].values)))
     return np.min(np.array(min_dists))
 
 if __name__ == '__main__':
