@@ -22,5 +22,13 @@ This unpublished work is following this [paper](https://www.ecva.net/papers/eccv
 - Neighboring aircrafts maximum radar separation limit 10km. 
 - Observation/prediction time horizon ratio 3:2.
 
-## Please cite our work if you found this is useful
-- [ ] To be posted
+
+## Citation
+If you found this research useful to your work, please cite this [paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3981312):
+```bib
+@article{pang3981312bayesian,
+  title={Bayesian Spatio-Temporal Graph Transformer Network (B-Star) for Multi-Aircraft Trajectory Prediction},
+  author={Pang, Yutian and Zhao, Xinyu and Hu, Jueming and Yan, Hao and Liu, Yongming},
+  journal={Available at SSRN 3981312}
+}
+```
