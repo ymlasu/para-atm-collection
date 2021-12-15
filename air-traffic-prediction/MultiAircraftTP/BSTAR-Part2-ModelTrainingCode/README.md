@@ -1,9 +1,7 @@
 # Data-Driven Uncertainty Aware Multi-Aircraft Trajectory Prediction in the Near Terminal Airspace 
+## B-STAR: Bayesian Spatio-Temporal Graph Transformer Network
 Author: Yutian Pang, Arizona State University <br>
 Email: yutian.pang@asu.edu
-
-# B-STAR
-Code repository for the paper entitled: Bayesian Spatio-Temporal Graph Transformer Network (B-STAR) for Multi-Aircraft Trajectory Prediction
 
 ### Environment
 
@@ -20,7 +18,7 @@ The data source used are ASDE-X data from Sherlock. Here, we anonymized the data
 - Remove the real-world unix timestamp and replace them by absolute time steps (e.g. 5, 10, 15, 20).
 - The flight callsign are masked with a unique agent id (integer).
 
-For this experiment, only four columns of ASDE-X needed. They are time, id, latitude, longitude.
+For this experiment, only four columns of ASDE-X needed. They are time, id, latitude, and longitude.
 
 The code used for processing and anonymized the raw ASDE-X data can be found in Part 1 Data Processing Demo. Data are saved in ```./data/iff/atl/2019080x/true_pos_.csv```
 
