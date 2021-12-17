@@ -6,13 +6,82 @@ import yaml
 
 from src.processor import processor
 
-# Use Deterministic mode and set random seed
+# Use cudnn deterministic mode and set random seed
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 torch.manual_seed(0)
 
 
 def get_parser():
+    """User interface for settig the parameters required to start the B-STAR training process, as well as loading the pre-trained B-STAR model to perform testing
+
+
+    Parameters:
+    ----------
+    dataset : str
+    	The name of the dataset used for training. The default dataset is IFF-ASDEX for KATL 	
+    save_dir : str
+    	The save directory
+    model_dir : str
+    	The model saving directory
+    config : str
+    	Configurations
+    using_cuda : bool
+    	Use cuda for training with GPU
+    test_set : str
+    	The selected testset within dataset
+    base_dir : str
+    	Base directory including the supporting scripts
+    save_base_dir : str
+    	Directory for saving caches and models
+    phase : str
+    	Training or Testing phase indicator
+    train_model : str
+    	The model name to train
+    load_model : str
+    	Load pre-trained model for testing or training
+    model : str
+    	The name of the model
+    seq_length : int
+    	The entire sequence length of time-series
+    	Used in constructing the graph structured dataset
+    	seq_length is the summation of obs_length and pred_length 
+    obs_length : int
+    	The input length to the model
+    pred_length : int
+    	The prediction length of the model
+    batch_around_ped : int
+    	Number of agents stored as one batch
+    	Adjusted based on computer memory limits
+    batch_size : int
+    	Total number of batches
+    test_batch_size : int
+    	Size of test batch
+    show_step : int
+    	Burn-in epoch number for showing training details
+    start_test : int
+    	Burn-in epoch number for starting test during training
+    sample_num : int
+    	Number of sample draws during training
+    num_epochs : int
+    	Total training epochs
+    ifshow_detail : bool
+    	Show training details
+    ifsave_results : bool
+    	Save intermediate results
+    randomRotate : bool
+    	Rotate input data sequence
+    neighbor_thred : int
+    	Neighboring threshold for dynamical graph determination
+    learning_rate : float
+    	Learning rate of optimizer
+    clip : int
+    	Clip value on inputs
+    skip : int
+    	Time interval in the raw data
+    """
+
+
     parser = argparse.ArgumentParser(description='BSTAR')
     parser.add_argument('--dataset', default='iffatl')
     parser.add_argument('--save_dir')
