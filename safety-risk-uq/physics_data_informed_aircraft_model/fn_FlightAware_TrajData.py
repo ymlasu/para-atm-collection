@@ -94,14 +94,9 @@ def pyfn_FlightAware_trajectory_extractor(FA_URL):
     traj_mat = pd.concat([col05,col12,col22,col32,col42,col52,col62,col72], axis=1,ignore_index = True)
     traj_mat.columns = names
     traj_mat.index = np.arange(traj_mat.shape[0])
-    
-    Time_s = np.array(col05)
-    Latitude = np.array(col12)
-    Longitude = np.array(col22)
-    Course_deg = np.array(col32)
-    TAS_kts = np.array(col42)
-    TAS_mph = np.array(col52)
-    Altitude_ft = np.array(col62)
-    ROCD = np.array(col72)
-    
-    return traj_mat, Time_s, Latitude, Longitude, Course_deg, TAS_kts, TAS_mph, Altitude_ft, ROCD;
+    traj_mat['TAS_kts']=traj_mat['TAS_kts'].astype(float)
+    traj_mat['TAS_mph']=traj_mat['TAS_mph'].astype(float)
+    traj_mat['Course_deg']=traj_mat['Course_deg'].astype(float)
+
+      
+    return traj_mat
