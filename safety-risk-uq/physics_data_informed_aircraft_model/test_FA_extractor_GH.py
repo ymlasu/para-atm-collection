@@ -11,13 +11,13 @@ FA_URL = 'https://flightaware.com/live/flight/AAL302/history/20210806/2240Z/KJFK
 
 traj_mat = extract_flightaware_data(FA_URL)
 
-Time_s = traj_mat['Time_s']
-Latitude = traj_mat['Latitude']
-Longitude = traj_mat['Longitude'] 
-Course_deg = traj_mat['Course_deg']
-TAS_kts = traj_mat['TAS_kts']
-TAS_mph = traj_mat['TAS_mph']
-Altitude_ft = traj_mat['Altitude_ft']
-ROCD = traj_mat['ROCD']
+Time_s = traj_mat['time']
+Latitude = traj_mat['latitude']
+Longitude = traj_mat['longitude'] 
+Course_deg = traj_mat['heading']
+TAS_kts = traj_mat['tas']
+TAS_mph = traj_mat['tas_mph']
+Altitude_ft = traj_mat['altitude']
+ROCD = traj_mat['rocd']
 
 #print(Time_s, Latitude, Longitude, Course_deg, TAS_kts, TAS_mph, Altitude_ft, ROCD)
