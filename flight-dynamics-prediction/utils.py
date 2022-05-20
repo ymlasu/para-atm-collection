@@ -40,6 +40,16 @@ def createFileList(myDir, format='.csv'):
                fileList.append(fullName)
    return fileList
 
+def predict(model,gtm_trj_ToBe_scaled,dataSetX_val,dataSetY_val,btchSize=32):
+    forecast = []
+    forecast = np.zeros((1,dataSetY_val.shape[1]))
+    forecast =np.append(forecast,model.predict(dataSetX_val,batch_size=btchSize),axis=0)
+    forecast = np.delete(forecast,(0),axis=0)
+    for i in range(dataSetY_val.shape[1]):
+        forecast[:,i] = scalingbk_Stand(forecast[:,i],gtm_trj_ToBe_scaled[:,i])
+    
+    return forecast
+
 def read_input(data_dir):
     fileList = createFileList(data_dir)
     minStep = getMinSteps(fileList)
@@ -254,12 +264,19 @@ def plotLoss(epochs,loss,outDir):
     FileOut = "loss_trainingV0_Clstm.png"
     plt.savefig(os.path.join(outDir,FileOut),bbox_inches='tight')
 
-def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSize,deltaT,outDir):
+def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSize,deltaT,outDir,notebook=False):
     if os.path.isdir(outDir):
         pass
     else:
         os.mkdir(outDir)
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+        
+    if notebook==False:
+        figsize=[5.8,5.8]
+    
+    if notebook==True:
+        figsize = [1.5,1,5]
+        
+    fig = plt.figure(figsize=figsize,dpi=520)
     LegendFont = matplotlib.font_manager.FontProperties(family="DejaVu Sans",
                                     weight="bold",
                                     style="normal", size=10)
@@ -277,7 +294,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "u_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,4],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,4],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
@@ -289,7 +306,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "v_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,7],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,7],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
@@ -300,7 +317,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "w_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,10],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,10],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
@@ -313,7 +330,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,13],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,13],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
@@ -324,7 +341,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "q_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,16],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,16],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
@@ -336,7 +353,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,19],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,19],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
@@ -348,7 +365,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,22],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,22],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
@@ -360,7 +377,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,25],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,25],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
@@ -372,7 +389,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "rdot_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,28],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,28],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
@@ -384,7 +401,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "Latitude_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,31],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,31],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
@@ -396,7 +413,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,34],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,34],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
@@ -408,7 +425,7 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     FileOut = "Altitude_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=520)
     plt.plot(time_array,predictedData[:,37],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,37],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
