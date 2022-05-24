@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import matplotlib
-
+import os
+from tensorflow.python.client import device_lib
 
 
 def scaling_Stand(x):
@@ -49,6 +50,13 @@ def predict(model,gtm_trj_ToBe_scaled,dataSetX_val,dataSetY_val,btchSize=32):
         forecast[:,i] = scalingbk_Stand(forecast[:,i],gtm_trj_ToBe_scaled[:,i])
     
     return forecast
+
+def savePred(predictedData,Fname = ""):
+    if Fname =="":
+        Fname = "CLSTM_Predicted.csv"
+    else:
+        Fname = Fname+ ".csv"
+    np.savetxt(Fname, predictedData, delimiter=",")
 
 def read_input(data_dir):
     fileList = createFileList(data_dir)
@@ -249,14 +257,24 @@ def myLSTM_DNN_Conv(window_size,paramCrl,sysFlag):
     return model
 
 
-def plotLoss(epochs,loss,outDir):
+def plotLoss(epochs,loss,outDir,notebook=False):
     if os.path.isdir(outDir):
         pass
     else:
         os.mkdir(outDir)
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
+    
+    if notebook==False:
+        figsize=[5.8,5.8]
+        dpi = 520
+    
+    if notebook==True:
+        figsize = [3.5,3.5]
+        dpi = 150
+     
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     ax = fig.add_subplot()
     ax.set_yscale("log")
+    plt.title('Loss Function')
     plt.xlabel('epochs')
     plt.ylabel('Training Loss')
     fig.tight_layout()
@@ -272,11 +290,15 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
         
     if notebook==False:
         figsize=[5.8,5.8]
+        dpi = 520
+        loc = 'upper right'
     
     if notebook==True:
-        figsize = [1.5,1,5]
+        figsize = [3.5,3.5]
+        dpi = 150
+        loc = 'best'
         
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     LegendFont = matplotlib.font_manager.FontProperties(family="DejaVu Sans",
                                     weight="bold",
                                     style="normal", size=10)
@@ -289,150 +311,150 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     plt.xlabel('Time (s)')
     plt.ylabel('u (ft/s)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "u_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,4],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,4],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
     plt.xlabel('Time (s)')
     plt.ylabel('v (ft/s)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "v_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,7],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,7],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
     plt.ylabel('w (ft/s)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "w_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,10],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,10],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
     plt.xlabel('Time (s)')
     plt.ylabel('p (rad/s)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "p_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,13],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,13],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
     plt.ylabel('q (rad/s)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "q_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,16],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,16],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
     plt.ylabel('r (rad/s)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "r_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,19],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,19],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
     plt.ylabel('pdot (rad/s^2)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "pdot_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,22],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,22],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
     plt.ylabel('qdot (rad/s^2)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "qdot_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,25],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,25],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
     plt.xlabel('Time (s)')
     plt.ylabel('rdot (rad/s^2)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "rdot_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,28],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,28],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
     plt.xlabel('Time (s)')
     plt.ylabel('Latitude (ft)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "Latitude_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,31],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,31],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
     plt.xlabel('Time (s)')
     plt.ylabel('Longitude (ft)')
     fig.tight_layout()
-    plt.legend(loc='upper center',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "Longitude_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,34],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,34],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
     plt.xlabel('Time (s)')
     plt.ylabel('Altitude (ft)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "Altitude_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
 
-    fig = plt.figure(figsize=figsize,dpi=520)
+    fig = plt.figure(figsize=figsize,dpi=dpi)
     plt.plot(time_array,predictedData[:,37],linestyle='-',color="k",antialiased=True,linewidth=2.0, label ='ML')
     plt.plot(time_array,orignalData[windowSize:,37],linestyle='--',color="r",antialiased=True,linewidth=2.0, label ='TCM')
 
     plt.xlabel('Time (s)')
     plt.ylabel('Alpha (degree)')
     fig.tight_layout()
-    plt.legend(loc='upper right',frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
+    plt.legend(loc=loc,frameon=False,prop=LegendFont,markerscale=1,handlelength=3)
 
     FileOut = "AngleofAttack_ML.png"
     plt.savefig(os.path.join(outDir,FileOut))
@@ -442,21 +464,6 @@ def plotResponse(predictedData,orignalData,Steps,InitialTime,TotalTime,windowSiz
     x_axisfont = {'fontname':"Calibri"} # see note below for family font list
     y_axisfont = {'fontname':"Calibri"}
     number_font = {'fontname':'cmb10'}'''
-
-def plotLoss(epochs,loss,outDir):
-    if os.path.isdir(outDir):
-        pass
-    else:
-        os.mkdir(outDir)
-    fig = plt.figure(figsize=[5.8,5.8],dpi=520)
-    ax = fig.add_subplot()
-    ax.set_yscale("log")
-    plt.xlabel('epochs')
-    plt.ylabel('Training Loss')
-    fig.tight_layout()
-    plt.semilogy(epochs, loss, 'k',antialiased=True,linewidth=2.0)
-    FileOut = "loss_trainingV0_Clstm.png"
-    plt.savefig(os.path.join(outDir,FileOut),bbox_inches='tight')
 
 
 def getCI(allTraj,trainOrTest,TrainingO=[]):
