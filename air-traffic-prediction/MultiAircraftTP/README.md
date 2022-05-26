@@ -26,9 +26,12 @@ This work is following this [paper](https://www.ecva.net/papers/eccv_2020/papers
 ## Citation
 If you found this research useful to your work, please cite this [preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3981312):
 ```bib
-@article{pang3981312bayesian,
-  title={Bayesian Spatio-Temporal Graph Transformer Network (B-Star) for Multi-Aircraft Trajectory Prediction},
+@article{pang2022bayesian,
+  title={Bayesian Spatio-Temporal grAph tRansformer network (B-STAR) for multi-aircraft trajectory prediction},
   author={Pang, Yutian and Zhao, Xinyu and Hu, Jueming and Yan, Hao and Liu, Yongming},
-  journal={Available at SSRN 3981312}
+  journal={Knowledge-Based Systems},
+  pages={108998},
+  year={2022},
+  publisher={Elsevier}
 }
 ```
