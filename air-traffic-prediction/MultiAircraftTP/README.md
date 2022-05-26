@@ -24,7 +24,7 @@ This work is following this [paper](https://www.ecva.net/papers/eccv_2020/papers
 
 
 ## Citation
-If you found this research useful to your work, please cite this [preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3981312):
+If you found this research useful to your work, please cite this [paper]([https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3981312](https://www.sciencedirect.com/science/article/pii/S0950705122004841)):
 ```bib
 @article{pang2022bayesian,
   title={Bayesian Spatio-Temporal grAph tRansformer network (B-STAR) for multi-aircraft trajectory prediction},
