@@ -27,3 +27,18 @@ The detailed information can be found [here](https://arc.aiaa.org/doi/abs/10.251
 - ObstacleAvoidanceENV.py: define RL environment, including transition model and reward function.
 
 - plotting.py: visualization of RL training process
+
+## Required python packages
+
+- gym
+- itertools
+- matplotlib
+- numpy
+- pandas 
+- sys
+- matplotlib
+- collections
+- shapely
+- math
+- random
+
