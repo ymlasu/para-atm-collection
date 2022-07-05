@@ -18,10 +18,12 @@ The detailed information can be found [here](https://arc.aiaa.org/doi/abs/10.251
  ```
 ## Files
 
-- main_RL_train_result.ipynb: main file for training and visualization
+- main_RL_train_result.ipynb: main file for training and visualization.
 
-- boundSize.py: check potential collision among different shapes.
+- SafetyBound.py: obtain the size of safety bound.
 
-- multiPoly_bound.py: define RL environment, including transition model and reward function.
+- geometryCheck.py: check potential collision among different shapes.
+
+- ObstacleAvoidanceENV.py: define RL environment, including transition model and reward function.
 
 - plotting.py: visualization of RL training process
