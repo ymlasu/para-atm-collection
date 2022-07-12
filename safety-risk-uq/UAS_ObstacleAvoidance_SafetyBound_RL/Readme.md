@@ -28,6 +28,10 @@ The detailed information can be found [here](https://arc.aiaa.org/doi/abs/10.251
 
 - plotting.py: visualization of RL training process
 
+- draw.py: visualization of learned trajectories
+
+- Q_learning.py: Q-learning algorithm
+
 ## Required python packages
 
 - gym
