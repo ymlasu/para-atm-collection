@@ -1,5 +1,5 @@
 # Machine Learning-Enhanced Aircraft Landing Scheduling: Prediction and Optimization
-Author: Yutian Pang, Arizona State University <br>
+Contact: Yutian Pang, Arizona State University <br>
 Email: yutian.pang@asu.edu
 
 # Highlights
