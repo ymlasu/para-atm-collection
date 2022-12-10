@@ -93,14 +93,18 @@ class DASHlinkData:
     def lands_at_airport(self,airport_lat_lon=[44.88526995556498, -93.2015923365669],key_list=['LATP','LONP','MSQT_1']):
         for key in key_list:
             self.temporal_resample_to_1_second(key)
-        td_index = self.get_touchdown_index()
-        
-        tem_lat = self.resampled_data_1s['LATP'][td_index]
-        tem_lon = self.resampled_data_1s['LONP'][td_index]
-        pos=(tem_lat,tem_lon)
-        dis=GD(airport_lat_lon,pos).miles
-        if dis<2:
-            return True
+        self.resampled_data_1s.dropna(axis=0,subset=key_list,inplace=True)
+        if np.any(self.resampled_data_1s['MSQT_1']==1.0):
+            td_index = self.get_touchdown_index()
+            tem_lat = self.resampled_data_1s['LATP'][td_index]
+            tem_lon = self.resampled_data_1s['LONP'][td_index]
+            sqt_switch = self.resampled_data_1s['MSQT_1'][td_index]
+            pos=(tem_lat,tem_lon)
+            dis=GD(airport_lat_lon,pos).miles
+            if (dis<2) and (sqt_switch==1.0):
+                return True
+            else:
+                return False
         else:
             return False
 
@@ -114,7 +118,6 @@ class DASHlinkData:
             if self.resampled_data_4s is None:
                 self.temporal_resample_to_4_seconds('MSQT_1')
             df = self.resampled_data_4s
-            
         idx = df[df['MSQT_1']==1.0].index
         if idx is not None:
             td_index = np.max(idx)
