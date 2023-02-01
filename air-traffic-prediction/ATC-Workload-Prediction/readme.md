@@ -2,6 +2,13 @@
 Author: Yutian Pang, Arizona State University <br>
 Email: yutian.pang@asu.edu
 
+## Highlights
+- We predict the air traffic controller (ATC) workload level from the flight traffic recordings. 
+- We structure the flight traffic information as dynamic graphs, varying with airspace spatiotemporal layouts. 
+- We adopt the evolving graph convolutional network (EvolveGCN) for this time-series dynamic graph classification task. 
+- We use conformal prediction for the improved ground-truth label coverage and show higher accuracy than simple classification.  
+- The workload experimental data is collected through real-world human ATC controllers' experiments, where both traffic conditions and human subjects are recorded.
+
 ## EvolveGCN: Evolving Graph Convolutional Networks for Dynamics Graphs
 The details of [EvolveGCN](https://arxiv.org/abs/1902.10191) can be found in the original paper. 
 
