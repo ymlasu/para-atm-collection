@@ -15,8 +15,8 @@ The details of [EvolveGCN](https://arxiv.org/abs/1902.10191) can be found in the
 * pandas
 * numpy
 
-## Setup Environment on Linux 
-### Torch with GPU support
+## Setup Environment
+### Linux with GPU support
 ```bash
 conda create --name dgl python==3.9.0
 conda activate dgl
