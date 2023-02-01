@@ -25,7 +25,9 @@ conda install -c dglteam dgl-cuda10.2
 conda install pandas
 ```
 ## To Train a Model
+```bash
 python train.py --raw-dir ./workload_data/ --processed-dir ./workload_data/processed --eval-class-id 0 --gpu 7
+```
 
 ## Citation
 Our paper is under review. The code will be released once the paper is pending online. 
