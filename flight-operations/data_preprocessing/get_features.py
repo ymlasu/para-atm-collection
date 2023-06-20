@@ -499,4 +499,4 @@ if __name__ == '__main__':
                         sys.stdout.flush()
 
     print("processed aircraft: {}".format(pdf3.shape[0]), end='\r')
-    pdf3.to_csv(os.getcwd()+f'/{sector}_{date}.csv')
+    pdf3.to_csv(os.getcwd()+f'/processed_features/{sector}_{date}.csv')
