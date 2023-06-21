@@ -9,11 +9,9 @@ Email: yutian.pang@asu.edu
 - We build a multi-stage conditional prediction algorithm based on the looping events, and find that explicitly including flight event counts and airspace complexity measures can benefit the model prediction capability. 
 - We demonstrate that the proposed method reduces the total landing time with a controlled reliability level compared with the First-Come-First-Served (FCFS) rule by running experiments with real-world data.
 
-# The paper is under review. The details will be released once the paper is pending online.
-
-## The code/data used in this work:
+## The code/data available in this work:
 - [x] Data Engineering
 - [x] Aircraft Landing Scheduling Case Studies
 - [x] Optimization Solver for Time-Constrained Travelling Salesman Problem
- 
+
 ## Citation
