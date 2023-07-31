@@ -38,7 +38,15 @@ python train.py --raw-dir ./workload_data/ --processed-dir ./workload_data/proce
 ```
 
 ## Citation
-Our paper is under review. The code will be released once the paper is pending online. 
+The paper has been accepted by Advanced Engineering Informatics. 
+```
+@article{pang2023air,
+  title={Air Traffic Controller Workload Level Prediction using Conformalized Dynamical Graph Learning},
+  author={Pang, Yutian and Hu, Jueming and Lieber, Christopher S and Cooke, Nancy J and Liu, Yongming},
+  journal={arXiv preprint arXiv:2307.10559},
+  year={2023}
+}
+```
 
 ## Reference
 Model training code borrowed heavily from [IBM/EvolveGCN](https://github.com/IBM/EvolveGCN)  
