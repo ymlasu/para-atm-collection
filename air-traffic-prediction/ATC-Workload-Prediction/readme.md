@@ -14,9 +14,9 @@ Email: yutian.pang@asu.edu
 The details of [EvolveGCN](https://arxiv.org/abs/1902.10191) can be found in the original paper. 
 
 ## Code Descriptions:
-- [ ] Raw Workload Data Parser
-- [ ] Training Code for EvolveGCN-O/EvolveGCN-H/GCN-Baseline
-- [ ] Prediction Label Post-Processing Conformal Prediction
+- [x] Raw Workload Data Parser
+- [x] Training Code for EvolveGCN-O/EvolveGCN-H/GCN-Baseline
+- [x] Prediction Label Post-Processing Conformal Prediction
 
 ## Dependency:
 * dgl
