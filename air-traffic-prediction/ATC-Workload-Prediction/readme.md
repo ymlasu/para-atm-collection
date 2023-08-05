@@ -40,11 +40,17 @@ python train.py --raw-dir ./workload_data/ --processed-dir ./workload_data/proce
 ## Citation
 The paper has been accepted by Advanced Engineering Informatics. 
 ```
-@article{pang2023air,
-  title={Air Traffic Controller Workload Level Prediction using Conformalized Dynamical Graph Learning},
-  author={Pang, Yutian and Hu, Jueming and Lieber, Christopher S and Cooke, Nancy J and Liu, Yongming},
-  journal={arXiv preprint arXiv:2307.10559},
-  year={2023}
+@article{PANG2023102113,
+title = {Air traffic controller workload level prediction using conformalized dynamical graph learning},
+journal = {Advanced Engineering Informatics},
+volume = {57},
+pages = {102113},
+year = {2023},
+issn = {1474-0346},
+doi = {https://doi.org/10.1016/j.aei.2023.102113},
+url = {https://www.sciencedirect.com/science/article/pii/S1474034623002410},
+author = {Yutian Pang and Jueming Hu and Christopher S. Lieber and Nancy J. Cooke and Yongming Liu},
+keywords = {Air traffic management, Aviation human factors, Controller workload, Graph neural network}
 }
 ```
 
