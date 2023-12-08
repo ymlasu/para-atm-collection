@@ -15,7 +15,7 @@ Email: yutian.pang@asu.edu
 - [x] Optimization Solver for Time-Constrained Travelling Salesman Problem
 
 ## Citation
-If you found our work useful, please cite,
+If you found our work useful, please cite us.
 ```
 @article{PANG2024104444,
   title = {Machine learning-enhanced aircraft landing scheduling under uncertainties},
