@@ -15,12 +15,18 @@ Email: yutian.pang@asu.edu
 - [x] Optimization Solver for Time-Constrained Travelling Salesman Problem
 
 ## Citation
-The manuscript has been accepted for publication by Transportation Research Part C. 
+If you found our work useful, please cite,
 ```
-@article{pang2023machine,
-  title={Machine Learning-Enhanced Aircraft Landing Scheduling under Uncertainties},
-  author={Pang, Yutian and Zhao, Peng and Hu, Jueming and Liu, Yongming},
-  journal={arXiv preprint arXiv:2311.16030},
-  year={2023}
+@article{PANG2024104444,
+  title = {Machine learning-enhanced aircraft landing scheduling under uncertainties},
+  journal = {Transportation Research Part C: Emerging Technologies},
+  volume = {158},
+  pages = {104444},
+  year = {2024},
+  issn = {0968-090X},
+  doi = {https://doi.org/10.1016/j.trc.2023.104444},
+  url = {https://www.sciencedirect.com/science/article/pii/S0968090X23004345},
+  author = {Yutian Pang and Peng Zhao and Jueming Hu and Yongming Liu},
+  keywords = {Air traffic management, Landing scheduling, Data-driven prediction, Optimization, Machine learning},
 }
 ```
