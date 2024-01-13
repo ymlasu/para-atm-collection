@@ -21,11 +21,11 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 adj_1 = adj_1.to(device)
 adj_2 = adj_2.to(device)
 
-in_features = 6
+in_features = 20
 embed_size = 24
 hidden_dim = 48
-num_nodes = 207
-spatial_heads = 2
+num_nodes = 36
+spatial_heads = 3
 temporal_heads = 2
 graph_heads = 2
 num_time = 20
